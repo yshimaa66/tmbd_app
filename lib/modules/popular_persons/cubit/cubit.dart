@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tmdb_app/models/popular_person/popular_person.dart';
 import 'package:tmdb_app/modules/popular_persons/cubit/states.dart';
 
 
