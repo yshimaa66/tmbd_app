@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tmdb_app/modules/popular_persons/cubit/cubit.dart';
 import 'package:tmdb_app/modules/popular_persons/cubit/states.dart';
+import 'package:tmdb_app/modules/popular_persons/widgets/error_message_widget.dart';
+import 'package:tmdb_app/modules/popular_persons/widgets/popular_persons_grid_view.dart';
 import 'widgets/popular_person_item.dart';
 
 
@@ -26,7 +28,26 @@ class _PopularPersonsScreenState extends State<PopularPersonsScreen> {
 
 
     Widget getBodyWidget(){
-
+      if(isSuccess==null){
+        // still fetch data
+        return const Center(child: CircularProgressIndicator());
+      }
+      else{
+      if(isSuccess!){
+        if(popularPersonsCubit.popularPersons.isNotEmpty){
+          return PopularPersonsGridView(popularPersonsCubit: popularPersonsCubit,);
+        }
+        else{
+          return ErrorMessageWidget(btnText:"Refresh",
+              textStr:'No Popular Person Found',
+              onPressed:popularPersonsCubit.refreshPopularPersons());
+        }
+      }
+      else{
+        return ErrorMessageWidget(btnText:"Retry",
+            textStr:'Error: Cannot Get Popular Persons \n$errorStr',
+            onPressed:popularPersonsCubit.refreshPopularPersons());
+      }}
     }
 
     // TODO: implement build
