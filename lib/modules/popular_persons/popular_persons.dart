@@ -70,6 +70,7 @@ class _PopularPersonsScreenState extends State<PopularPersonsScreen> {
           popularPersonsCubit = BlocProvider.of<PopularPersonsCubit>(context);
           return Scaffold(
               appBar: AppBar(
+                centerTitle: true,
                 title: const Text('Popular Persons'),
               ),
               body: getBodyWidget());

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:tmdb_app/modules/popular_persons/popular_persons.dart';
+import 'package:tmdb_app/shared/navigation.dart';
 import 'package:tmdb_app/utilities/index.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,6 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
       debugPrint('delayed execution');
+      navigateAndReplacement(context, const PopularPersonsScreen());
     });
   }
 

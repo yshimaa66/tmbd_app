@@ -5,7 +5,8 @@ import 'package:tmdb_app/utilities/index.dart';
 
 class PopularPersonItem extends StatelessWidget {
   final PopularPerson? popularPerson;
-  const PopularPersonItem({Key? key, required this.popularPerson}) : super(key: key);
+  const PopularPersonItem({Key? key,
+    required this.popularPerson}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +20,10 @@ class PopularPersonItem extends StatelessWidget {
           Container(
             margin: const EdgeInsets.all(5),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(5),
+              borderRadius: BorderRadius.circular(15),
               child: CachedNetworkImage(
-                imageUrl:
-                    "https://image.tmdb.org/t/p/w500${popularPerson?.profilePath}",
+                imageUrl: "https://image.tmdb.org/t/p/w500"
+                    "${popularPerson?.profilePath}",
                 placeholder: (context, url) =>
                     const Center(child: CircularProgressIndicator()),
                 fit: BoxFit.cover,
@@ -32,7 +33,7 @@ class PopularPersonItem extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey.withOpacity(0.1)),
-              borderRadius: BorderRadius.circular(5),
+              borderRadius: BorderRadius.circular(15),
               boxShadow: const [
                 BoxShadow(color: Colors.black12, spreadRadius: 0.5),
               ],
