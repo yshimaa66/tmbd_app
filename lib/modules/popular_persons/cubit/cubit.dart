@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tmdb_app/data/api/api_service.dart';
+import 'package:tmdb_app/data/service/api_service.dart';
 import 'package:tmdb_app/data/local/person_db.dart';
 import 'package:tmdb_app/data/repository/popular_person_repository.dart';
 import 'package:tmdb_app/models/popular_person/popular_person.dart';

@@ -1,4 +1,4 @@
-import 'package:tmdb_app/data/api/api_service.dart';
+import 'package:tmdb_app/data/service/api_service.dart';
 import 'package:tmdb_app/data/local/person_db.dart';
 import 'package:tmdb_app/main.dart';
 import 'package:tmdb_app/models/all_popular_persons/all_popular_persons.dart';

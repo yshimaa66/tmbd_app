@@ -36,7 +36,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<MainCubit>(
-        create: (context) => MainCubit(),
+        create: (context) => MainCubit()
+          ..getInternetStatus(),
         child: BlocConsumer<MainCubit, MainStates>(
             listener: (context, state) async {
 
