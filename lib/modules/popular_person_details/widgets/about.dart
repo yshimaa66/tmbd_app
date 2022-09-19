@@ -53,7 +53,6 @@ class AboutWidget extends StatelessWidget {
               subtitle: ReadMoreText(
                 "${popularPerson.biography}",
                 trimLines: 4,
-                colorClickableText: Colors.pink,
                 trimMode: TrimMode.Line,
                 trimCollapsedText: '  READ MORE',
                 trimExpandedText: '  READ LESS',
@@ -62,9 +61,9 @@ class AboutWidget extends StatelessWidget {
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.normal,
                 ),
-                lessStyle: const TextStyle(
+                lessStyle: TextStyle(
                   fontSize: 12,
-                  color: Colors.redAccent,
+                  color: Theme.of(context).primaryColor.withOpacity(.5),
                   fontWeight: FontWeight.normal,
                 ),
               ),

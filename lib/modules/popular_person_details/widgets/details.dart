@@ -25,34 +25,19 @@ class Details extends StatelessWidget {
               pinned: true,
               title: Text("${popularPerson.name}"),
               flexibleSpace: FlexibleSpaceBar(
-                background: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.all(5),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(5),
-                        child: CachedNetworkImage(
-                          imageUrl:
-                          "https://image.tmdb.org/t/p/w500${popularPerson.profilePath}",
-                          placeholder: (context, url) => const Center(
-                              child: CircularProgressIndicator()),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Container(
+                background: Container(
                       decoration: BoxDecoration(
                         borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(15),
                           bottomRight: Radius.circular(15),
                         ),
                         boxShadow: const [
-                          BoxShadow(color: Colors.black12, spreadRadius: 0.5),
+                          BoxShadow(color: Colors.black12,
+                              spreadRadius: 0.5),
                         ],
                         gradient: LinearGradient(
                           colors: [
-                            Colors.black.withOpacity(0.3),
+                            Colors.white.withOpacity(0.3),
                             Colors.black.withOpacity(1),
                           ],
                           begin: Alignment.center,
@@ -75,7 +60,7 @@ class Details extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 8),
+                            const SizedBox(height: 10),
                             Text(
                               "${popularPerson.name}",
                               style: customTextStyleTitle.copyWith(
@@ -102,25 +87,26 @@ class Details extends StatelessWidget {
                         ),
                       ),
                     ),
-                  ],
-                ),
               ),
             ),
             SliverPersistentHeader(
               delegate: SliverAppBarDelegate(
                 TabBar(
-                  labelColor: Theme.of(context).textTheme.bodyText1?.color,
-                  unselectedLabelColor: Colors.grey,
-                  indicatorSize: TabBarIndicatorSize.label,
-                  isScrollable: true,
-                  tabs: const [
-                    Tab(text: "About"),
-                    Tab(text: "Images"),
-                    Tab(text: "Movies"),
-                    Tab(text: "TV Shows"),
-                  ],
+                    labelColor: Theme.of(context).textTheme.bodyText1?.color,
+                    labelStyle: const TextStyle(fontWeight: FontWeight.w800),
+                    unselectedLabelColor: Colors.grey,
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    indicatorColor: Theme.of(context).backgroundColor,
+                    indicatorWeight: 10,
+                    isScrollable: true,
+                    tabs: const [
+                      Tab(text: "About"),
+                      Tab(text: "Images"),
+                      Tab(text: "Movies"),
+                      Tab(text: "TV Shows"),
+                    ],
+                  ),
                 ),
-              ),
               pinned: true,
             ),
           ];

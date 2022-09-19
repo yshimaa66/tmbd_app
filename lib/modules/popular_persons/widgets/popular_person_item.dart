@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tmdb_app/models/popular_person/popular_person.dart';
+import 'package:tmdb_app/modules/popular_person_details/popular_person_details.dart';
+import 'package:tmdb_app/shared/navigation.dart';
 import 'package:tmdb_app/utilities/index.dart';
 
 class PopularPersonItem extends StatelessWidget {
@@ -11,9 +13,8 @@ class PopularPersonItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-
-      },
+      onTap: () => navigateTo(context,
+          PopularPersonsDetailsScreen(popularPersonId: popularPerson!.id!)),
       child: Stack(
         fit: StackFit.expand,
         children: [

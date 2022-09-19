@@ -18,7 +18,7 @@ class MainCubit extends Cubit<MainStates> {
         .onConnectivityChanged
         .listen((ConnectivityResult result) async {
       // Got a new connectivity status!
-      debugPrint("result $result");
+      debugPrint("getInternetStatus $result");
       if (result == ConnectivityResult.none) {
         internetAvailable = false;
         showToastMessage("You are offline !");

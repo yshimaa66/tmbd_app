@@ -50,8 +50,7 @@ class MyApp extends StatelessWidget {
               title: appName,
               debugShowCheckedModeBanner: false,
               home: const SplashScreen(),
-              theme: theme(context),
-              darkTheme: darkTheme(context),
+              theme: darkTheme(context),
               builder: (context, widget) => ResponsiveWrapper.builder(
                 BouncingScrollWrapper.builder(context, widget!),
                 maxWidth: 1200,

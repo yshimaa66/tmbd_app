@@ -8,7 +8,8 @@ class CreditWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.custom(
+    return casts!.isNotEmpty?
+    GridView.custom(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         childAspectRatio: 1,
@@ -17,6 +18,9 @@ class CreditWidget extends StatelessWidget {
         (context, index) => CreditCastWidget(casts: casts?[index]),
         childCount: casts?.length ?? 0,
       ),
+    ):const Center(
+      child: Text("Nothing Found",
+        style: TextStyle(color: Colors.grey,fontSize: 12),),
     );
   }
 }

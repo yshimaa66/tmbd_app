@@ -9,7 +9,7 @@ class ImagesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.custom(
+    return images!.profiles!.isNotEmpty?GridView.custom(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         childAspectRatio: 1,
@@ -35,6 +35,9 @@ class ImagesWidget extends StatelessWidget {
         ),
         childCount: images?.profiles?.length ?? 0,
       ),
+    ):const Center(
+    child: Text("Nothing Found",
+    style: TextStyle(color: Colors.grey,fontSize: 12),),
     );
   }
 }
