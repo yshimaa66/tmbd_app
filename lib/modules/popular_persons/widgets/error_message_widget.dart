@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class ErrorMessageWidget extends StatelessWidget {
   final String textStr,btnText;
-  final void Function()? onPressed;
+  final void Function() onPressed;
   const ErrorMessageWidget({Key? key, required this.textStr,
-    required this.btnText, this.onPressed}) : super(key: key);
+    required this.btnText, required this.onPressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
