@@ -4,11 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tmdb_app/models/popular_person/popular_person.dart';
 import 'package:tmdb_app/modules/popular_person_details/cubit/cubit.dart';
 import 'package:tmdb_app/modules/popular_person_details/cubit/states.dart';
-import 'package:tmdb_app/modules/popular_persons/widgets/credit.dart';
-import 'package:tmdb_app/modules/popular_persons/widgets/images.dart';
-import 'package:tmdb_app/modules/popular_persons/widgets/text_container.dart';
+import 'package:tmdb_app/modules/popular_person_details/widgets/credit.dart';
+import 'package:tmdb_app/modules/popular_person_details/widgets/images.dart';
+import 'package:tmdb_app/modules/popular_person_details/widgets/text_container.dart';
 import 'package:tmdb_app/utilities/index.dart';
-import 'widgets/about_popular_person.dart';
+import 'widgets/about.dart';
 
 class PopularPersonsDetailsScreen extends StatefulWidget {
   final int popularPersonId;
@@ -168,10 +168,10 @@ class _PopularPersonsDetailsScreenState extends State<PopularPersonsDetailsScree
             },
             body: TabBarView(
                   children: [
-                    AboutPersonWidget(person: person),
-                    PopularPersonImagesWidget(images: person?.otherImages),
-                    PopularPersonCreditWidget(casts: person?.movieCasts),
-                    PopularPersonCreditWidget(casts: person?.tvCasts),
+                    AboutWidget(person: person),
+                    ImagesWidget(images: person?.otherImages),
+                    CreditWidget(casts: person?.movieCasts),
+                    CreditWidget(casts: person?.tvCasts),
                   ],
               ),
             ),

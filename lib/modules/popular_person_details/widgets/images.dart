@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:tmdb_app/models/popular_person/popular_person.dart';
 import 'package:tmdb_app/shared/navigation.dart';
 
-class PopularPersonImagesWidget extends StatelessWidget {
+class ImagesWidget extends StatelessWidget {
   final OtherImages? images;
-  const PopularPersonImagesWidget({Key? key, required this.images}) : super(key: key);
+  const ImagesWidget({Key? key, required this.images}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
