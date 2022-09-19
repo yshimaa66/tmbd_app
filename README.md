@@ -34,5 +34,5 @@ api (https://developers.themoviedb.org/3) :
 ![Popular Person Details - show downloaded image on the phone](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055650.png)
 </div>
 
-
-<div style="width:260px;max-width:100%;"><div style="height:0;padding-bottom:205.38%;position:relative;"><iframe width="260" height="534" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameBorder="0" src="https://imgflip.com/embed/6tx13r"></iframe></div><p><a href="https://imgflip.com/gif/6tx13r">via Imgflip</a></p></div>
+<br/><br/>
+<div style="width:260px;max-width:100%;"><div style="height:0;padding-bottom:205.38%;position:relative;"><iframe width="260" height="534" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameBorder="0" src="https://imgflip.com/embed/6tx13r"></iframe></div><p><a href="https://imgflip.com/gif/6tx13r">See Demo</a></p></div>
