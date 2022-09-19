@@ -34,8 +34,6 @@ api (https://developers.themoviedb.org/3) :
 ![Popular Person Details - show downloaded image on the phone](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055650.png)
 
 
-## Demo
 
-https://imgflip.com/gif/6tx13r
 
 
