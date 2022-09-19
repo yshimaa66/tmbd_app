@@ -22,7 +22,7 @@ api (https://developers.themoviedb.org/3) :
 ## Screenshots
 
 <div style="width:60 ; height:60px">
-![Splash](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055434.png)
+![Splash]<img src="https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055434.png"/>
 ![Home/Popular Persons](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055527.png)
 ![Popular Person Details - about](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055542.png)
 ![Popular Person Details - images](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Simulator%20Screen%20Shot%20-%20iPhone%2013%20-%202022-09-19%20at%2015.08.12.png)
@@ -35,4 +35,4 @@ api (https://developers.themoviedb.org/3) :
 </div>
 
 <br/><br/>
-<div style="width:260px;max-width:100%;"><div style="height:0;padding-bottom:205.38%;position:relative;"><iframe width="260" height="534" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameBorder="0" src="https://imgflip.com/embed/6tx13r"></iframe></div><p><a href="https://imgflip.com/gif/6tx13r">See Demo</a></p></div>
+<div style="width:260px;max-width:100%;"><div style="height:0;padding-bottom:205.38%;position:relative;"><iframe width="260" height="534" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameBorder="0" src="https://imgflip.com/embed/6tx13r"></iframe></div><p><a href="https://imgflip.com/gif/6tx13r">via Imgflip</a></p></div>
