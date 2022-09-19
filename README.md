@@ -21,11 +21,11 @@ api (https://developers.themoviedb.org/3) :
 
 ## Screenshots
 
-<img src="http://url/image.png](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055434.png" title= "Splash" style=" width:60px  height:60px "  >
+<img src="https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055434.png" title= "Splash" style=" width:60  height:60 "  >
 
-<img src="https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055527.png" title= "Home/Popular Persons" style=" width:60px  height:60px "  >
+<img src="https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055527.png" title= "Home/Popular Persons" style=" width:60  height:60 "  >
 
-<img src="https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055542.png" title= "Popular Person Details - about" style=" width:60px  height:60px "  >
+<img src="https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055542.png" title= "Popular Person Details - about" style=" width:60  height:60 "  >
 
 <img src="https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Simulator%20Screen%20Shot%20-%20iPhone%2013%20-%202022-09-19%20at%2015.08.12.png" title= "Popular Person Details - images" style=" width:60px  height:60px "  >
 
