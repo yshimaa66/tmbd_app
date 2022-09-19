@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tmdb_app/models/popular_person/popular_person.dart';
+import 'package:tmdb_app/modules/popular_person_image_view/popular_person_image_view.dart';
 import 'package:tmdb_app/shared/navigation.dart';
 
 class ImagesWidget extends StatelessWidget {
@@ -16,9 +17,11 @@ class ImagesWidget extends StatelessWidget {
       ),
       childrenDelegate: SliverChildBuilderDelegate(
         (context, index) => GestureDetector(
-          onTap: () {
-
-          },
+            onTap: () => navigateTo(context,
+              PopularPersonImageViewScreen(
+              imageUrl:
+              "https://image.tmdb.org/t/p/original${images?.profiles?[index].filePath}",
+            )),
           child: Container(
             margin: const EdgeInsets.all(4.0),
             child: ClipRRect(

@@ -12,6 +12,8 @@ import 'package:tmdb_app/utilities/index.dart';
 
 late MainCubit mainCubit;
 
+final GlobalKey<NavigatorState> navKey = GlobalKey<NavigatorState>();
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // Plugin must be initialized before using
@@ -45,8 +47,8 @@ class MyApp extends StatelessWidget {
 
             },builder: (context, state){
           mainCubit = BlocProvider.of<MainCubit>(context);
-          return OKToast(
-            child: MaterialApp(
+          return MaterialApp(
+              navigatorKey: navKey,
               title: appName,
               debugShowCheckedModeBanner: false,
               home: const SplashScreen(),
@@ -62,7 +64,6 @@ class MyApp extends StatelessWidget {
                   ResponsiveBreakpoint.resize(1000, name: DESKTOP),
                 ],
               ),
-            ),
           );}));
   }
 }
