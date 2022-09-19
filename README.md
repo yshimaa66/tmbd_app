@@ -21,15 +21,15 @@ api (https://developers.themoviedb.org/3) :
 
 ## Screenshots
 
-![Splash](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055434.png?raw=true)
-![Home/Popular Persons](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055527.png?raw=true)
-![Popular Person Details - about](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055542.png?raw=true)
-![Popular Person Details - images](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Simulator%20Screen%20Shot%20-%20iPhone%2013%20-%202022-09-19%20at%2015.08.12.png?raw=true)
-![Popular Person Details - movies](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055709.png?raw=true)
-![Popular Person Details - TV shows](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055754.png?raw=true)
-![Popular Person Details - Nothing Found](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Simulator%20Screen%20Shot%20-%20iPhone%2013%20-%202022-09-19%20at%2015.08.04.png?raw=true)
-![Popular Person Details - image downloading](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055620.png?raw=true)
-![Popular Person Details - image downloaded successfully](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055625.png?raw=true)
-![Popular Person Details - show downloaded image on the phone](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055650.png?raw=true)
+![Splash](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055434.png)
+![Home/Popular Persons](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055527.png)
+![Popular Person Details - about](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055542.png)
+![Popular Person Details - images](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Simulator%20Screen%20Shot%20-%20iPhone%2013%20-%202022-09-19%20at%2015.08.12.png)
+![Popular Person Details - movies](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055709.png)
+![Popular Person Details - TV shows](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055754.png)
+![Popular Person Details - Nothing Found](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Simulator%20Screen%20Shot%20-%20iPhone%2013%20-%202022-09-19%20at%2015.08.04.png)
+![Popular Person Details - image downloading](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055620.png)
+![Popular Person Details - image downloaded successfully](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055625.png)
+![Popular Person Details - show downloaded image on the phone](https://github.com/yshimaa66/tmdb_app/blob/main/screen_shots/Screenshot_20220919_055650.png)
 
 
