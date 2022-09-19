@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 5), () {
       debugPrint('delayed execution');
       navigateAndReplacement(context, const PopularPersonsScreen());
     });
@@ -24,16 +24,29 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(50.0),
         child: Center(
-          child: Hero(
-            tag: appIconTransparent,
-            child: SvgPicture.asset(
-              appIconTransparent,
-              fit: BoxFit.fitWidth,
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Hero(
+                tag: appIconTransparent,
+                child: Image.asset(
+                  appIconTransparent,
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
+
+              const SizedBox(height: 20,),
+
+              Text('Popular Persons',
+                style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold),),
+            ],
           ),
         ),
       ),

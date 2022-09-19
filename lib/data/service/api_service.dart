@@ -56,43 +56,4 @@ class ApiService {
       return Future.error(e.toString());
     }
   }
-
-  Future<dynamic> post(
-    String url, {
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? body,
-    String? query,
-  }) async {
-    try {
-      debugPrint(":: Post $url ::");
-      if (url.startsWith('/')) {
-        url = url.substring(1);
-      }
-
-      final response = await _client.post(
-        '$baseUrl/$url?api_key=$apiKey&$query',
-        options: dio.Options(
-          headers: _header,
-        ),
-        data: body,
-      );
-
-      if (response.statusCode == 200) {
-        return response.data;
-      } else {
-        debugPrint(response.statusCode.toString());
-        return Future.error(
-          response.data?['status_message'] ?? 'Failed to load data',
-        );
-      }
-    } on SocketException catch (e) {
-      return Future.error("Network connectivity error! Check your internet");
-    } on dio.DioError catch (e) {
-      debugPrint(e.toString());
-      return Future.error(e.message);
-    } catch (e) {
-      debugPrint(e.toString());
-      return Future.error(e.toString());
-    }
-  }
 }

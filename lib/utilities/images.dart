@@ -1,1 +1,1 @@
-String get appIconTransparent => 'assets/logo.svg';
+String get appIconTransparent => 'assets/selfie-time-celebrities.gif';

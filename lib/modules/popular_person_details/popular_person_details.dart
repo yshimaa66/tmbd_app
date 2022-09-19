@@ -34,10 +34,6 @@ class _PopularPersonsDetailsScreenState extends State<PopularPersonsDetailsScree
   @override
   Widget build(BuildContext context) {
 
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
-
     Widget getBodyWidget(){
       if(popularPersonDetailsCubit.loadingDetails){
         return const Center(child: CircularProgressIndicator());

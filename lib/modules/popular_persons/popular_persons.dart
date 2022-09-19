@@ -23,10 +23,6 @@ class _PopularPersonsScreenState extends State<PopularPersonsScreen> {
   @override
   Widget build(BuildContext context) {
 
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
-
     Widget getBodyWidget(){
       if(isSuccess==null){
         // still fetch data
@@ -71,7 +67,10 @@ class _PopularPersonsScreenState extends State<PopularPersonsScreen> {
           return Scaffold(
               appBar: AppBar(
                 centerTitle: true,
-                title: const Text('Popular Persons'),
+                title: Text('Popular Persons',
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                ),),
               ),
               body: getBodyWidget());
         }));
