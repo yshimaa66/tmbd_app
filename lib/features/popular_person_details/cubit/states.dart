@@ -1,4 +1,4 @@
-import 'package:tmdb_app/models/popular_person/popular_person.dart';
+import 'package:tmdb_app/features/popular_persons/data/models/popular_person/popular_person.dart';
 
 abstract class PopularPersonDetailsStates {}
 

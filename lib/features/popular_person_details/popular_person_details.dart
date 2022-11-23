@@ -1,17 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tmdb_app/models/popular_person/popular_person.dart';
+import 'package:tmdb_app/features/popular_persons/data/models/popular_person/popular_person.dart';
+import 'package:tmdb_app/features/popular_persons/presentation/widgets/error_message_widget.dart';
 import 'package:tmdb_app/features/popular_person_details/cubit/cubit.dart';
 import 'package:tmdb_app/features/popular_person_details/cubit/states.dart';
-import 'package:tmdb_app/features/popular_person_details/widgets/credit.dart';
 import 'package:tmdb_app/features/popular_person_details/widgets/details.dart';
-import 'package:tmdb_app/features/popular_person_details/widgets/images.dart';
-import 'package:tmdb_app/features/popular_person_details/widgets/sliver_app_bar_delegate.dart';
-import 'package:tmdb_app/features/popular_person_details/widgets/text_container.dart';
-import 'package:tmdb_app/features/popular_persons/widgets/error_message_widget.dart';
-import 'package:tmdb_app/utilities/index.dart';
-import 'widgets/about.dart';
 
 class PopularPersonsDetailsScreen extends StatefulWidget {
   final int popularPersonId;

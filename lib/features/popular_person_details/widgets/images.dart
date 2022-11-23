@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:tmdb_app/models/popular_person/popular_person.dart';
 import 'package:tmdb_app/features/popular_person_image_view/popular_person_image_view.dart';
+import 'package:tmdb_app/features/popular_persons/data/models/popular_person/popular_person.dart';
 import 'package:tmdb_app/shared/navigation.dart';
 
 class ImagesWidget extends StatelessWidget {

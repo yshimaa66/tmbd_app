@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tmdb_app/data/service/api_service.dart';
 import 'package:tmdb_app/data/local/person_db.dart';
 import 'package:tmdb_app/data/repository/popular_person_repository.dart';
-import 'package:tmdb_app/models/popular_person/popular_person.dart';
-import 'package:tmdb_app/features/popular_persons/cubit/states.dart';
+import 'package:tmdb_app/features/popular_persons/data/models/popular_person/popular_person.dart';
+import 'package:tmdb_app/features/popular_persons/presentation/bloc/states.dart';
 
 
 class PopularPersonsCubit extends Cubit<PopularPersonsStates> {
@@ -28,19 +28,19 @@ class PopularPersonsCubit extends Cubit<PopularPersonsStates> {
   getPopularPersons() async {
     toggleLoadingMore();
     try {
-      final result = await popularPersonRepository.getPopularPerson(page: currentPage);
-      debugPrint("$currentPage -> Last Page: ${result?.page}/${result?.totalPages}");
-      if (result != null && currentPage == result.totalPages) {
-        lastPage = true;
-      }
-      final bool emptyRepositories = result?.results == null;
-      if (!getFirstData && emptyRepositories) {
-        emit(PopularPersonsEmpty());
-      } else {
-        getFirstData = true;
-        popularPersons = [...popularPersons, ...result?.results ?? []];
-        emit(PopularPersonsSuccess());
-      }
+      // final result = await popularPersonRepository.getPopularPerson(page: currentPage);
+      // debugPrint("$currentPage -> Last Page: ${result?.page}/${result?.totalPages}");
+      // if (result != null && currentPage == result.totalPages) {
+      //   lastPage = true;
+      // }
+      // final bool emptyRepositories = result?.results == null;
+      // if (!getFirstData && emptyRepositories) {
+      //   emit(PopularPersonsEmpty());
+      // } else {
+      //   getFirstData = true;
+      //   popularPersons = [...popularPersons, ...result?.results ?? []];
+      //   emit(PopularPersonsSuccess());
+      // }
     } catch (e) {
       emit(PopularPersonsError(e.toString()));
     } finally {

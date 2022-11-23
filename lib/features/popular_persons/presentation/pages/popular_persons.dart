@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tmdb_app/features/popular_persons/cubit/cubit.dart';
-import 'package:tmdb_app/features/popular_persons/cubit/states.dart';
-import 'package:tmdb_app/features/popular_persons/widgets/error_message_widget.dart';
-import 'package:tmdb_app/features/popular_persons/widgets/popular_persons_grid_view.dart';
-import 'widgets/popular_person_item.dart';
+import 'package:tmdb_app/features/popular_persons/presentation/bloc/cubit.dart';
+import 'package:tmdb_app/features/popular_persons/presentation/bloc/states.dart';
+import 'package:tmdb_app/features/popular_persons/presentation/widgets/error_message_widget.dart';
+import 'package:tmdb_app/features/popular_persons/presentation/widgets/popular_persons_grid_view.dart';
 
 
 class PopularPersonsScreen extends StatefulWidget {

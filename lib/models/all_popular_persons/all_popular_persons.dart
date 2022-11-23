@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tmdb_app/models/popular_person/popular_person.dart';
+import 'package:tmdb_app/features/popular_persons/data/models/popular_person/popular_person.dart';
 
 part 'all_popular_persons.freezed.dart';
 part 'all_popular_persons.g.dart';

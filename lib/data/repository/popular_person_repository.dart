@@ -1,8 +1,8 @@
 import 'package:tmdb_app/data/service/api_service.dart';
 import 'package:tmdb_app/data/local/person_db.dart';
+import 'package:tmdb_app/features/popular_persons/data/models/popular_person/popular_person.dart';
 import 'package:tmdb_app/main.dart';
 import 'package:tmdb_app/models/all_popular_persons/all_popular_persons.dart';
-import 'package:tmdb_app/models/popular_person/popular_person.dart';
 
 class PopularPersonRepository {
   final PersonDb _db;
@@ -12,26 +12,6 @@ class PopularPersonRepository {
 
   Future<void> storeAllPopularPersons(AllPopularPersons allPopularPersons) async {
     await _db.storeAllPopularPersons(allPopularPersons);
-  }
-
-  Future<AllPopularPersons?> getPopularPerson({int page = 1}) async {
-    if (mainCubit.internetAvailable) {
-      try {
-        final response = await _apiService.get(
-          '/person/popular',
-          query: "page=$page",
-        );
-        final popular = AllPopularPersons.fromJson(response);
-
-        // store page into cache
-        await _db.storeAllPopularPersons(popular);
-        return popular;
-      } catch (e) {
-        return _db.getPopular(page);
-      }
-    } else {
-      return _db.getPopular(page);
-    }
   }
 
   Future<PopularPerson?> getPopularPersonDetail({required int personId}) async {

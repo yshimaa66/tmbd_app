@@ -1,18 +1,12 @@
 import 'package:get_storage/get_storage.dart';
+import 'package:tmdb_app/features/popular_persons/data/models/popular_person/popular_person.dart';
 import 'package:tmdb_app/models/all_popular_persons/all_popular_persons.dart';
-import 'package:tmdb_app/models/popular_person/popular_person.dart';
 
 final _box = GetStorage();
 
 class PersonDb {
   storeAllPopularPersons(AllPopularPersons allPopularPersons) {
     _box.write("popular_${allPopularPersons.page}", allPopularPersons.toJson());
-  }
-
-  AllPopularPersons? getPopular(int page) {
-    if (!_box.hasData("popular_$page")) return null;
-    AllPopularPersons p = AllPopularPersons.fromJson(_box.read("popular_$page"));
-    return p;
   }
 
   setPersonDetails(PopularPerson popularPerson) {
