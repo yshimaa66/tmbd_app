@@ -5,9 +5,9 @@ import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:tmdb_app/modules/main/cubit/cubit.dart';
-import 'package:tmdb_app/modules/main/cubit/states.dart';
-import 'package:tmdb_app/modules/splash/splash.dart';
+import 'package:tmdb_app/features/main/cubit/cubit.dart';
+import 'package:tmdb_app/features/main/cubit/states.dart';
+import 'package:tmdb_app/features/splash/splash.dart';
 import 'package:tmdb_app/utilities/index.dart';
 
 late MainCubit mainCubit;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:tmdb_app/modules/popular_persons/popular_persons.dart';
+import 'package:tmdb_app/features/popular_persons/popular_persons.dart';
 import 'package:tmdb_app/shared/navigation.dart';
 import 'package:tmdb_app/utilities/index.dart';
 

@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tmdb_app/models/popular_person/popular_person.dart';
-import 'package:tmdb_app/modules/popular_person_details/widgets/about.dart';
-import 'package:tmdb_app/modules/popular_person_details/widgets/credit.dart';
-import 'package:tmdb_app/modules/popular_person_details/widgets/images.dart';
-import 'package:tmdb_app/modules/popular_person_details/widgets/sliver_app_bar_delegate.dart';
-import 'package:tmdb_app/modules/popular_person_details/widgets/text_container.dart';
+import 'package:tmdb_app/features/popular_person_details/widgets/about.dart';
+import 'package:tmdb_app/features/popular_person_details/widgets/credit.dart';
+import 'package:tmdb_app/features/popular_person_details/widgets/images.dart';
+import 'package:tmdb_app/features/popular_person_details/widgets/sliver_app_bar_delegate.dart';
+import 'package:tmdb_app/features/popular_person_details/widgets/text_container.dart';
 import 'package:tmdb_app/utilities/index.dart';
 
 class Details extends StatelessWidget {

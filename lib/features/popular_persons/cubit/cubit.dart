@@ -6,7 +6,7 @@ import 'package:tmdb_app/data/service/api_service.dart';
 import 'package:tmdb_app/data/local/person_db.dart';
 import 'package:tmdb_app/data/repository/popular_person_repository.dart';
 import 'package:tmdb_app/models/popular_person/popular_person.dart';
-import 'package:tmdb_app/modules/popular_persons/cubit/states.dart';
+import 'package:tmdb_app/features/popular_persons/cubit/states.dart';
 
 
 class PopularPersonsCubit extends Cubit<PopularPersonsStates> {

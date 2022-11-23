@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tmdb_app/data/local/person_db.dart';
 import 'package:tmdb_app/data/repository/popular_person_repository.dart';
 import 'package:tmdb_app/data/service/api_service.dart';
-import 'package:tmdb_app/modules/popular_person_details/cubit/states.dart';
+import 'package:tmdb_app/features/popular_person_details/cubit/states.dart';
 
 class PopularPersonDetailsCubit extends Cubit<PopularPersonDetailsStates> {
   PopularPersonDetailsCubit() : super(Initial());

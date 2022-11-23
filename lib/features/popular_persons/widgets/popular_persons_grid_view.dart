@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tmdb_app/modules/popular_persons/cubit/cubit.dart';
-import 'package:tmdb_app/modules/popular_persons/widgets/popular_person_item.dart';
+import 'package:tmdb_app/features/popular_persons/cubit/cubit.dart';
+import 'package:tmdb_app/features/popular_persons/widgets/popular_person_item.dart';
 
 class PopularPersonsGridView extends StatelessWidget {
   final PopularPersonsCubit popularPersonsCubit;

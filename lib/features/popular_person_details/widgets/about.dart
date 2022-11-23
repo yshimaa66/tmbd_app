@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 import 'package:tmdb_app/models/popular_person/popular_person.dart';
-import 'package:tmdb_app/modules/popular_person_details/widgets/text_container.dart';
+import 'package:tmdb_app/features/popular_person_details/widgets/text_container.dart';
 
 class AboutWidget extends StatelessWidget {
   final PopularPerson popularPerson;
