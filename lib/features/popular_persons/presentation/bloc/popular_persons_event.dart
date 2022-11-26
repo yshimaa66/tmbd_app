@@ -6,12 +6,17 @@ abstract class PopularPersonsEvent extends Equatable {
 }
 
 class GetPopularPersons extends PopularPersonsEvent {
-  final int currentPage;
-
-  GetPopularPersons(this.currentPage);
+  const GetPopularPersons();
 
   @override
-  List<Object?> get props => [currentPage];
+  List<Object?> get props => [];
+}
+
+class GetLocalPopularPersons extends PopularPersonsEvent {
+  const GetLocalPopularPersons();
+
+  @override
+  List<Object?> get props => [];
 }
 
 class LoadMore extends PopularPersonsEvent {
@@ -28,22 +33,8 @@ class RefreshPopularPersons extends PopularPersonsEvent {
   List<Object?> get props => [];
 }
 
-class ToggleLoadingMore extends PopularPersonsEvent {
-  const ToggleLoadingMore();
-
-  @override
-  List<Object?> get props => [];
-}
-
 class OnEndScroll extends PopularPersonsEvent {
   const OnEndScroll();
-
-  @override
-  List<Object?> get props => [];
-}
-
-class OnTopScroll extends PopularPersonsEvent {
-  const OnTopScroll();
 
   @override
   List<Object?> get props => [];

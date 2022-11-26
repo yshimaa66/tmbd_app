@@ -2,7 +2,7 @@ import 'dart:core';
 
 import 'package:equatable/equatable.dart';
 
-class PopularPersonEntity extends Equatable{
+class PopularPersonEntity extends Equatable {
   final int id;
   final String name, knownForDepartment, profilePath;
 
@@ -13,5 +13,5 @@ class PopularPersonEntity extends Equatable{
       this.profilePath = ""});
 
   @override
-  List<Object?> get props => [];
+  List<Object> get props => [id, name, knownForDepartment, profilePath];
 }

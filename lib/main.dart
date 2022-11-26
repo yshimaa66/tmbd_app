@@ -5,12 +5,9 @@ import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:tmdb_app/features/main/cubit/cubit.dart';
-import 'package:tmdb_app/features/main/cubit/states.dart';
+import 'package:tmdb_app/core/services/services_locator.dart';
 import 'package:tmdb_app/features/splash/splash.dart';
 import 'package:tmdb_app/utilities/index.dart';
-
-late MainCubit mainCubit;
 
 final GlobalKey<NavigatorState> navKey = GlobalKey<NavigatorState>();
 
@@ -20,6 +17,7 @@ void main() async {
   await FlutterDownloader.initialize(debug: true, ignoreSsl: true);
 
   await GetStorage.init();
+  ServicesLocator()..init();
   await SystemChrome.setPreferredOrientations(
     [
       DeviceOrientation.portraitUp,
@@ -37,17 +35,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<MainCubit>(
-        create: (context) => MainCubit()
-          ..getInternetStatus(),
-        child: BlocConsumer<MainCubit, MainStates>(
-            listener: (context, state) async {
-
-
-
-            },builder: (context, state){
-          mainCubit = BlocProvider.of<MainCubit>(context);
-          return MaterialApp(
+    return MaterialApp(
               navigatorKey: navKey,
               title: appName,
               debugShowCheckedModeBanner: false,
@@ -64,6 +52,6 @@ class MyApp extends StatelessWidget {
                   ResponsiveBreakpoint.resize(1000, name: DESKTOP),
                 ],
               ),
-          );}));
+          );
   }
 }

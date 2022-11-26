@@ -8,15 +8,20 @@ class PopularPersonsState extends Equatable {
   final bool getFirstData;
   final bool lastPage;
   final bool loadingMore;
+  final bool isRefreshing;
+  final DataSource dataSource;
 
-  PopularPersonsState(
-      {this.popularPersons = const [],
-      this.requestState = RequestState.loading,
-      this.errorMessage = "",
-      this.currentPage = 1,
-      this.getFirstData = false,
-      this.lastPage = false,
-      this.loadingMore = false});
+  PopularPersonsState({
+    this.popularPersons = const [],
+    this.requestState = RequestState.loading,
+    this.errorMessage = "",
+    this.currentPage = 1,
+    this.getFirstData = true,
+    this.lastPage = false,
+    this.loadingMore = false,
+    this.isRefreshing = false,
+    this.dataSource = DataSource.remote,
+  });
 
   PopularPersonsState copyWith({
     List<PopularPerson>? popularPersons,
@@ -26,6 +31,8 @@ class PopularPersonsState extends Equatable {
     bool? getFirstData,
     bool? lastPage,
     bool? loadingMore,
+    bool? isRefreshing,
+    DataSource? dataSource,
   }) {
     return PopularPersonsState(
         popularPersons: popularPersons ?? this.popularPersons,
@@ -34,7 +41,9 @@ class PopularPersonsState extends Equatable {
         currentPage: currentPage ?? this.currentPage,
         getFirstData: getFirstData ?? this.getFirstData,
         lastPage: lastPage ?? this.lastPage,
-        loadingMore: loadingMore ?? this.loadingMore);
+        loadingMore: loadingMore ?? this.loadingMore,
+        isRefreshing: isRefreshing ?? this.isRefreshing,
+        dataSource: dataSource ?? this.dataSource);
   }
 
   @override
@@ -45,5 +54,8 @@ class PopularPersonsState extends Equatable {
         currentPage,
         getFirstData,
         lastPage,
+        loadingMore,
+        isRefreshing,
+        dataSource
       ];
 }
