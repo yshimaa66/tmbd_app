@@ -1,10 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:tmdb_app/features/popular_person_details/domain/entities/cast_entity.dart';
 import 'package:tmdb_app/utilities/index.dart';
 
 class CreditCastWidget extends StatelessWidget {
-  final dynamic casts;
-  const CreditCastWidget({Key? key, required this.casts}) : super(key: key);
+  final CastEntity? castEntity;
+  const CreditCastWidget({Key? key, required this.castEntity}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class CreditCastWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(5),
             child: CachedNetworkImage(
               imageUrl:
-                  "https://image.tmdb.org/t/p/w500${casts?.posterPath ?? casts?.backdropPath}",
+                  "https://image.tmdb.org/t/p/w500${castEntity?.posterPath ?? castEntity?.backdropPath}",
               placeholder: (context, url) =>
                   const Center(child: CircularProgressIndicator()),
               fit: BoxFit.cover,
@@ -47,7 +48,7 @@ class CreditCastWidget extends StatelessWidget {
             children: [
               ListTile(
                 title: Text(
-                  "${casts?.name ?? casts?.title}",
+                  "${castEntity?.name ?? castEntity?.title}",
                   style: customTextStyleTitle,
                 ),
                 dense: true,
@@ -61,12 +62,12 @@ class CreditCastWidget extends StatelessWidget {
                     ),
                     const SizedBox(width: 2),
                     Text(
-                      "${casts?.voteAverage}",
+                      "${castEntity?.voteAverage}",
                       style: customTextStyleSubtitle,
                     ),
                     // const SizedBox(width: 5),
                     Text(
-                      "(${casts?.voteCount})",
+                      "(${castEntity?.voteCount})",
                       style: customTextStyleSubtitle,
                     ),
                   ],

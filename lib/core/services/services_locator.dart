@@ -6,6 +6,15 @@ import 'package:tmdb_app/core/API/api_client.dart';
 import 'package:tmdb_app/core/API/api_consumer.dart';
 import 'package:tmdb_app/core/API/api_interceptors.dart';
 import 'package:tmdb_app/core/network/network_info.dart';
+import 'package:tmdb_app/features/popular_person_details/data/data_source/local/popular_person_details_local_data_source.dart';
+import 'package:tmdb_app/features/popular_person_details/data/data_source/local/popular_person_details_local_data_source_impl.dart';
+import 'package:tmdb_app/features/popular_person_details/data/data_source/remote/popular_person_details_remote_data_source.dart';
+import 'package:tmdb_app/features/popular_person_details/data/data_source/remote/popular_person_details_remote_data_source_impl.dart';
+import 'package:tmdb_app/features/popular_person_details/data/repository/popular_person_details_repo_impl.dart';
+import 'package:tmdb_app/features/popular_person_details/domain/repository/popular_person_details_repo.dart';
+import 'package:tmdb_app/features/popular_person_details/domain/usecases/get_local_popular_person_details_usecase.dart';
+import 'package:tmdb_app/features/popular_person_details/domain/usecases/get_popular_person_details_usecase.dart';
+import 'package:tmdb_app/features/popular_person_details/domain/usecases/store_popular_person_details_usecase.dart';
 import 'package:tmdb_app/features/popular_persons/data/data_source/local/popular_persons_local_data_source.dart';
 import 'package:tmdb_app/features/popular_persons/data/data_source/local/popular_persons_local_data_source_impl.dart';
 import 'package:tmdb_app/features/popular_persons/data/data_source/remote/popular_persons_remote_data_source.dart';
@@ -24,7 +33,8 @@ class ServicesLocator {
     sl.registerLazySingleton<GetStorage>(() => GetStorage());
 
     ///NetworkInfo
-    sl.registerLazySingleton<InternetConnectionChecker>(() => InternetConnectionChecker());
+    sl.registerLazySingleton<InternetConnectionChecker>(
+        () => InternetConnectionChecker());
     sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl());
 
     ///APIServices
@@ -32,6 +42,12 @@ class ServicesLocator {
     sl.registerLazySingleton<Dio>(() => Dio());
     sl.registerLazySingleton<ApiConsumer>(() => DioConsumer(client: sl<Dio>()));
 
+    initPopularPersons();
+
+    initPopularPersonDetails();
+  }
+
+  void initPopularPersons() {
     ///PopularPersonsLocalDataSource
     sl.registerLazySingleton<PopularPersonsLocalDataSource>(
         () => PopularPersonsLocalDataSourceImpl());
@@ -48,8 +64,30 @@ class ServicesLocator {
     sl.registerLazySingleton<GetPopularPersonsUseCase>(
         () => GetPopularPersonsUseCase());
     sl.registerLazySingleton<StorePopularPersonsUseCase>(
-            () => StorePopularPersonsUseCase());
+        () => StorePopularPersonsUseCase());
     sl.registerLazySingleton<GetLocalPopularPersonsUseCase>(
-            () => GetLocalPopularPersonsUseCase());
+        () => GetLocalPopularPersonsUseCase());
+  }
+
+  void initPopularPersonDetails() {
+    ///PopularPersonDetailsLocalDataSource
+    sl.registerLazySingleton<PopularPersonDetailsLocalDataSource>(
+        () => PopularPersonDetailsLocalDataSourceImpl());
+
+    ///PopularPersonDetailsRemoteDataSource
+    sl.registerLazySingleton<PopularPersonDetailsRemoteDataSource>(
+        () => PopularPersonDetailsRemoteDataSourceImpl(sl()));
+
+    ///PopularPersonDetailsRepo
+    sl.registerLazySingleton<PopularPersonDetailsRepo>(
+        () => PopularPersonDetailsRepoImpl());
+
+    ///PopularPersonDetailsUseCase
+    sl.registerLazySingleton<GetPopularPersonDetailsUseCase>(
+        () => GetPopularPersonDetailsUseCase());
+    sl.registerLazySingleton<StorePopularPersonDetailsUseCase>(
+        () => StorePopularPersonDetailsUseCase());
+    sl.registerLazySingleton<GetLocalPopularPersonDetailsUseCase>(
+        () => GetLocalPopularPersonDetailsUseCase());
   }
 }

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:tmdb_app/features/popular_person_details/domain/entities/cast_entity.dart';
 
 class MovieCredits extends Equatable {
   List<Cast>? cast;
@@ -39,7 +40,7 @@ class MovieCredits extends Equatable {
   List get props => [cast, crew, id];
 }
 
-class Cast extends Equatable{
+class Cast extends Equatable {
   bool? adult;
   String? backdropPath;
   List<int>? genreIds;
@@ -121,27 +122,27 @@ class Cast extends Equatable{
 
   @override
   List get props => [
-    adult,
-    backdropPath,
-    genreIds,
-    id,
-    originalLanguage,
-    originalTitle,
-    overview,
-    popularity,
-    posterPath,
-    releaseDate,
-    title,
-    video,
-    voteAverage,
-    voteCount,
-    character,
-    creditId,
-    order
-  ];
+        adult,
+        backdropPath,
+        genreIds,
+        id,
+        originalLanguage,
+        originalTitle,
+        overview,
+        popularity,
+        posterPath,
+        releaseDate,
+        title,
+        video,
+        voteAverage,
+        voteCount,
+        character,
+        creditId,
+        order
+      ];
 }
 
-class Crew extends Equatable{
+class Crew extends Equatable {
   bool? adult;
   String? backdropPath;
   List<int>? genreIds;
@@ -223,22 +224,22 @@ class Crew extends Equatable{
 
   @override
   List get props => [
-    adult,
-    backdropPath,
-    genreIds,
-    id,
-    originalLanguage,
-    originalTitle,
-    overview,
-    popularity,
-    posterPath,
-    releaseDate,
-    title,
-    video,
-    voteAverage,
-    voteCount,
-    creditId,
-    department,
-    job
-  ];
+        adult,
+        backdropPath,
+        genreIds,
+        id,
+        originalLanguage,
+        originalTitle,
+        overview,
+        popularity,
+        posterPath,
+        releaseDate,
+        title,
+        video,
+        voteAverage,
+        voteCount,
+        creditId,
+        department,
+        job
+      ];
 }

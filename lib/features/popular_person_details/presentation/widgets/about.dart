@@ -1,46 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 import 'package:tmdb_app/features/popular_person_details/data/models/popular_person_details.dart';
-import 'package:tmdb_app/features/popular_persons/data/models/popular_person/popular_person.dart';
-import 'package:tmdb_app/features/popular_person_details/widgets/text_container.dart';
+import 'package:tmdb_app/features/popular_person_details/domain/entities/popular_person_details_entity.dart';
+import 'package:tmdb_app/features/popular_person_details/presentation/widgets/text_container.dart';
 
 class AboutWidget extends StatelessWidget {
-  final PopularPersonDetails popularPersonDetails;
-  const AboutWidget({Key? key, required this.popularPersonDetails}) : super(key: key);
+  final PopularPersonDetailsEntity popularPersonDetailsEntity;
+  const AboutWidget({Key? key, required this.popularPersonDetailsEntity}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
-          if (popularPersonDetails.name != null)
+          if (popularPersonDetailsEntity.name != null)
             ListTile(
-              subtitle: Text("${popularPersonDetails.name}"),
+              subtitle: Text("${popularPersonDetailsEntity.name}"),
               title: const Text("Name"),
             ),
-          if (popularPersonDetails.name != null) const Divider(),
-          if (popularPersonDetails.birthday != null)
+          if (popularPersonDetailsEntity.name != null) const Divider(),
+          if (popularPersonDetailsEntity.birthday != null)
             ListTile(
-              subtitle: Text("${popularPersonDetails.birthday}"),
+              subtitle: Text("${popularPersonDetailsEntity.birthday}"),
               title: const Text("Birthday"),
             ),
-          if (popularPersonDetails.birthday != null) const Divider(),
-          if (popularPersonDetails.placeOfBirth != null)
+          if (popularPersonDetailsEntity.birthday != null) const Divider(),
+          if (popularPersonDetailsEntity.placeOfBirth != null)
             ListTile(
-              subtitle: Text("${popularPersonDetails.placeOfBirth}"),
+              subtitle: Text("${popularPersonDetailsEntity.placeOfBirth}"),
               title: const Text("From/Address"),
             ),
-          if (popularPersonDetails.placeOfBirth != null) const Divider(),
-          if (popularPersonDetails.alsoKnownAs?.isNotEmpty == true)
+          if (popularPersonDetailsEntity.placeOfBirth != null) const Divider(),
+          if (popularPersonDetailsEntity.alsoKnownAs?.isNotEmpty == true)
             ListTile(
               subtitle: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.only(top: 5),
                 child: Row(
                   children: List.generate(
-                    popularPersonDetails.alsoKnownAs?.length ?? 0,
+                    popularPersonDetailsEntity.alsoKnownAs?.length ?? 0,
                     (index) => CustomTextContainer(
-                      text: "${popularPersonDetails.alsoKnownAs?[index]}",
+                      text: "${popularPersonDetailsEntity.alsoKnownAs?[index]}",
                       textColor: Theme.of(context).primaryColor,
                     ),
                   ),
@@ -48,11 +48,11 @@ class AboutWidget extends StatelessWidget {
               ),
               title: const Text("Also Known As"),
             ),
-          if (popularPersonDetails.alsoKnownAs?.isNotEmpty == true) const Divider(),
-          if (popularPersonDetails.biography != null)
+          if (popularPersonDetailsEntity.alsoKnownAs?.isNotEmpty == true) const Divider(),
+          if (popularPersonDetailsEntity.biography != null)
             ListTile(
               subtitle: ReadMoreText(
-                "${popularPersonDetails.biography}",
+                "${popularPersonDetailsEntity.biography}",
                 trimLines: 4,
                 trimMode: TrimMode.Line,
                 trimCollapsedText: '  READ MORE',

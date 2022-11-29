@@ -1,7 +1,8 @@
 part of 'popular_persons_bloc.dart';
 
+@immutable
 class PopularPersonsState extends Equatable {
-  final List<PopularPerson> popularPersons;
+  final List<PopularPersonEntity> popularPersons;
   final RequestState requestState;
   final String errorMessage;
   final int currentPage;
@@ -24,7 +25,7 @@ class PopularPersonsState extends Equatable {
   });
 
   PopularPersonsState copyWith({
-    List<PopularPerson>? popularPersons,
+    List<PopularPersonEntity>? popularPersons,
     RequestState? requestState,
     String? errorMessage,
     int? currentPage,

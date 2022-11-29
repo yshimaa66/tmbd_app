@@ -5,12 +5,12 @@ import 'package:tmdb_app/features/popular_person_image_view/popular_person_image
 import 'package:tmdb_app/shared/navigation.dart';
 
 class ImagesWidget extends StatelessWidget {
-  final OtherImages? images;
+  final List<String>? images;
   const ImagesWidget({Key? key, required this.images}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return images!.profiles!.isNotEmpty?GridView.custom(
+    return images!.isNotEmpty?GridView.custom(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         childAspectRatio: 1,
@@ -20,7 +20,7 @@ class ImagesWidget extends StatelessWidget {
             onTap: () => navigateTo(context,
               PopularPersonImageViewScreen(
               imageUrl:
-              "https://image.tmdb.org/t/p/original${images?.profiles?[index].filePath}",
+              "https://image.tmdb.org/t/p/original${images?[index]}",
             )),
           child: Container(
             margin: const EdgeInsets.all(4.0),
@@ -28,7 +28,7 @@ class ImagesWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(5),
               child: CachedNetworkImage(
                 imageUrl:
-                    "https://image.tmdb.org/t/p/w500${images?.profiles?[index].filePath}",
+                    "https://image.tmdb.org/t/p/w500${images?[index]}",
                 placeholder: (context, url) =>
                     const Center(child: CircularProgressIndicator()),
                 fit: BoxFit.cover,
@@ -36,7 +36,7 @@ class ImagesWidget extends StatelessWidget {
             ),
           ),
         ),
-        childCount: images?.profiles?.length ?? 0,
+        childCount: images?.length ?? 0,
       ),
     ):const Center(
     child: Text("Nothing Found",

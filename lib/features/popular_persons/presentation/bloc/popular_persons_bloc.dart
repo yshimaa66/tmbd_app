@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tmdb_app/core/utils/enums.dart';
 import 'package:tmdb_app/features/popular_persons/data/models/popular_person/popular_person.dart';
+import 'package:tmdb_app/features/popular_persons/domain/entities/popular_person_entity.dart';
 import 'package:tmdb_app/features/popular_persons/domain/usecases/get_local_popular_persons_usecase.dart';
 import 'package:tmdb_app/features/popular_persons/domain/usecases/get_popular_persons_usecase.dart';
 import 'package:tmdb_app/features/popular_persons/domain/usecases/store_popular_persons_usecase.dart';
@@ -51,7 +52,7 @@ class PopularPersonsBloc
       if (r != null) {
         debugPrint("right getPopularPersons $r");
         storePopularPersonsUseCase(StorePopularPersonsParameters(r));
-        List<PopularPerson>? allPopularPersons = [];
+        List<PopularPersonEntity>? allPopularPersons = [];
         allPopularPersons = [...state.popularPersons, ...r.results ?? []];
         final bool lastPage = (state.currentPage == r.totalPages);
         return emit(state.copyWith(
@@ -65,7 +66,7 @@ class PopularPersonsBloc
             getFirstData: state.currentPage == 1));
       } else {
         return emit(state.copyWith(
-            requestState: RequestState.error,
+            requestState: RequestState.loaded,
             errorMessage: "No remote data",
             isRefreshing: false,
             loadingMore: false,
@@ -121,8 +122,8 @@ class PopularPersonsBloc
     }, (r) async {
       // TODO : implement entity
       if (r != null) {
-        List<PopularPerson>? allPopularPersons = [];
-        allPopularPersons = [...state.popularPersons, ...r!.results ?? []];
+        List<PopularPersonEntity>? allPopularPersons = [];
+        allPopularPersons = [...state.popularPersons, ...r.results ?? []];
         debugPrint("_getLocalPopularPersons $r");
         final bool lastPage = (state.currentPage == r.totalPages);
         return emit(state.copyWith(
@@ -136,7 +137,7 @@ class PopularPersonsBloc
             getFirstData: state.currentPage == 1));
       } else {
         return emit(state.copyWith(
-            requestState: RequestState.error,
+            requestState: RequestState.loaded,
             errorMessage: "No local data",
             loadingMore: false,
             isRefreshing: false,

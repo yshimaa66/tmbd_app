@@ -1,20 +1,26 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:tmdb_app/features/popular_person_details/popular_person_details.dart';
-import 'package:tmdb_app/features/popular_persons/data/models/popular_person/popular_person.dart';
+import 'package:tmdb_app/core/API/end_points.dart';
+import 'package:tmdb_app/features/popular_person_details/presentation/pages/popular_person_details.dart';
+import 'package:tmdb_app/features/popular_persons/domain/entities/popular_person_entity.dart';
 import 'package:tmdb_app/shared/navigation.dart';
 import 'package:tmdb_app/utilities/index.dart';
 
 class PopularPersonItem extends StatelessWidget {
-  final PopularPerson? popularPerson;
-  const PopularPersonItem({Key? key,
-    required this.popularPerson}) : super(key: key);
+  final PopularPersonEntity? popularPerson;
+
+  const PopularPersonItem({Key? key, required this.popularPerson})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => navigateTo(context,
-          PopularPersonsDetailsScreen(popularPersonId: popularPerson!.id!)),
+      onTap: () => navigateTo(
+          context,
+          PopularPersonsDetailsScreen(
+            personId: popularPerson!.id??-1,
+            name: popularPerson!.name??"",
+          )),
       child: Stack(
         fit: StackFit.expand,
         children: [
@@ -23,8 +29,8 @@ class PopularPersonItem extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15),
               child: CachedNetworkImage(
-                imageUrl: "https://image.tmdb.org/t/p/w500"
-                    "${popularPerson?.profilePath}",
+                imageUrl: EndPoints.imageUrl(
+                    "${popularPerson?.profilePath}"),
                 placeholder: (context, url) =>
                     const Center(child: CircularProgressIndicator()),
                 fit: BoxFit.cover,

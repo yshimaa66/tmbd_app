@@ -1,13 +1,16 @@
+import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tmdb_app/features/popular_persons/data/models/popular_person/popular_person.dart';
+import 'package:tmdb_app/features/popular_persons/domain/entities/all_popular_persons_entity.dart';
 
-class AllPopularPersons {
+class AllPopularPersons extends Equatable {
   int? page;
   List<PopularPerson>? results;
   int? totalPages;
   int? totalResults;
 
-  AllPopularPersons({this.page, this.results, this.totalPages, this.totalResults});
+  AllPopularPersons(
+      {this.page, this.results, this.totalPages, this.totalResults});
 
   AllPopularPersons.fromJson(Map<String, dynamic> json) {
     page = json['page'];
@@ -31,4 +34,16 @@ class AllPopularPersons {
     data['total_results'] = this.totalResults;
     return data;
   }
+
+  AllPopularPersonsEntity toDomain() {
+    return AllPopularPersonsEntity(
+      page: page!,
+      totalPages: totalPages!,
+      totalResults: totalResults!,
+      results: results!.map((e) => e.toDomain()).toList(),
+    );
+  }
+
+  @override
+  List<Object?> get props => [page, results, totalPages, totalResults];
 }

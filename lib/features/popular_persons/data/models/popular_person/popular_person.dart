@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:tmdb_app/features/popular_persons/domain/entities/popular_person_entity.dart';
 
 class PopularPerson extends Equatable {
   bool? adult;
@@ -83,6 +84,14 @@ class PopularPerson extends Equatable {
         popularity,
         profilePath
       ];
+
+  PopularPersonEntity toDomain() {
+    return PopularPersonEntity(
+        id: id!,
+        name: name!,
+        knownForDepartment: knownForDepartment!,
+        profilePath: profilePath!);
+  }
 }
 
 class KnownFor extends Equatable {

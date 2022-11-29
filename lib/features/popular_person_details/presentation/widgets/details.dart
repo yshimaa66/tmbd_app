@@ -1,17 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:tmdb_app/features/popular_person_details/data/models/popular_person_details.dart';
-import 'package:tmdb_app/features/popular_person_details/widgets/about.dart';
-import 'package:tmdb_app/features/popular_person_details/widgets/credit.dart';
-import 'package:tmdb_app/features/popular_person_details/widgets/images.dart';
-import 'package:tmdb_app/features/popular_person_details/widgets/sliver_app_bar_delegate.dart';
-import 'package:tmdb_app/features/popular_person_details/widgets/text_container.dart';
-import 'package:tmdb_app/features/popular_persons/data/models/popular_person/popular_person.dart';
+import 'package:tmdb_app/features/popular_person_details/domain/entities/popular_person_details_entity.dart';
+import 'package:tmdb_app/features/popular_person_details/presentation/widgets/about.dart';
+import 'package:tmdb_app/features/popular_person_details/presentation/widgets/credit.dart';
+import 'package:tmdb_app/features/popular_person_details/presentation/widgets/images.dart';
+import 'package:tmdb_app/features/popular_person_details/presentation/widgets/sliver_app_bar_delegate.dart';
+import 'package:tmdb_app/features/popular_person_details/presentation/widgets/text_container.dart';
 import 'package:tmdb_app/utilities/index.dart';
 
 class Details extends StatelessWidget {
-  final PopularPersonDetails popularPersonDetails;
-  const Details({Key? key, required this.popularPersonDetails}) : super(key: key);
+  final PopularPersonDetailsEntity popularPersonDetailsEntity;
+  const Details({Key? key, required this.popularPersonDetailsEntity}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +23,7 @@ class Details extends StatelessWidget {
               expandedHeight: 280.0,
               floating: false,
               pinned: true,
-              title: Text("${popularPersonDetails.name}"),
+              title: Text("${popularPersonDetailsEntity.name}"),
               flexibleSpace: FlexibleSpaceBar(
                 background: Container(
                       decoration: BoxDecoration(
@@ -56,14 +55,14 @@ class Details extends StatelessWidget {
                               child: ClipOval(
                                 child: CachedNetworkImage(
                                   imageUrl:
-                                  "https://image.tmdb.org/t/p/w500${popularPersonDetails.profilePath}",
+                                  "https://image.tmdb.org/t/p/w500${popularPersonDetailsEntity.profilePath}",
                                   fit: BoxFit.cover,
                                 ),
                               ),
                             ),
                             const SizedBox(height: 10),
                             Text(
-                              "${popularPersonDetails.name}",
+                              "${popularPersonDetailsEntity.name}",
                               style: customTextStyleTitle.copyWith(
                                 fontSize: 18,
                               ),
@@ -73,12 +72,12 @@ class Details extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 CustomTextContainer(
-                                  text: "${popularPersonDetails.knownForDepartment}",
+                                  text: "${popularPersonDetailsEntity.knownForDepartment}",
                                   textColor: Theme.of(context).primaryColor,
                                 ),
                                 // const SizedBox(width: 8),
                                 CustomTextContainer(
-                                  text: "${popularPersonDetails.popularity} Known Credits",
+                                  text: "${popularPersonDetailsEntity.popularity} Known Credits",
                                   textColor: Colors.white54,
                                 ),
                               ],
@@ -114,10 +113,10 @@ class Details extends StatelessWidget {
         },
         body: TabBarView(
           children: [
-            AboutWidget(popularPersonDetails: popularPersonDetails),
-            ImagesWidget(images: popularPersonDetails.otherImages),
-            CreditWidget(casts: popularPersonDetails.movieCreditsCast),
-            CreditWidget(casts: popularPersonDetails.tvCreditsCast),
+            AboutWidget(popularPersonDetailsEntity: popularPersonDetailsEntity),
+            ImagesWidget(images: popularPersonDetailsEntity.images),
+            CreditWidget(castsEntity: popularPersonDetailsEntity.movieCreditCasts),
+            CreditWidget(castsEntity: popularPersonDetailsEntity.tvCreditCasts),
           ],
         ),
       ),

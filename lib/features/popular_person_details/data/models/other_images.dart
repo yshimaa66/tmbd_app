@@ -32,7 +32,6 @@ class OtherImages extends Equatable {
 class Profiles extends Equatable{
   double? aspectRatio;
   int? height;
-  Null? iso6391;
   String? filePath;
   double? voteAverage;
   int? voteCount;
@@ -41,7 +40,6 @@ class Profiles extends Equatable{
   Profiles(
       {this.aspectRatio,
       this.height,
-      this.iso6391,
       this.filePath,
       this.voteAverage,
       this.voteCount,
@@ -50,7 +48,6 @@ class Profiles extends Equatable{
   Profiles.fromJson(Map<String, dynamic> json) {
     aspectRatio = json['aspect_ratio'];
     height = json['height'];
-    iso6391 = json['iso_639_1'];
     filePath = json['file_path'];
     voteAverage = json['vote_average'];
     voteCount = json['vote_count'];
@@ -61,7 +58,6 @@ class Profiles extends Equatable{
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['aspect_ratio'] = this.aspectRatio;
     data['height'] = this.height;
-    data['iso_639_1'] = this.iso6391;
     data['file_path'] = this.filePath;
     data['vote_average'] = this.voteAverage;
     data['vote_count'] = this.voteCount;
@@ -73,7 +69,6 @@ class Profiles extends Equatable{
   List get props => [
     aspectRatio,
     height,
-    iso6391,
     filePath,
     voteAverage,
     voteCount,

@@ -4,6 +4,8 @@ import 'package:tmdb_app/features/popular_person_details/data/models/movie_credi
 import 'package:tmdb_app/features/popular_person_details/data/models/other_images.dart';
 import 'package:tmdb_app/features/popular_person_details/data/models/tv_credits.dart'
     as tv_credits;
+import 'package:tmdb_app/features/popular_person_details/domain/entities/cast_entity.dart';
+import 'package:tmdb_app/features/popular_person_details/domain/entities/popular_person_details_entity.dart';
 
 class PopularPersonDetails extends Equatable {
   bool? adult;
@@ -104,6 +106,38 @@ class PopularPersonDetails extends Equatable {
           otherImages: otherImages ?? this.otherImages,
           movieCreditsCast: movieCreditsCast ?? this.movieCreditsCast,
           tvCreditsCast: tvCreditsCast ?? this.tvCreditsCast);
+
+  PopularPersonDetailsEntity toDomain() {
+    return PopularPersonDetailsEntity(
+        id: id,
+        name: name,
+        birthday: birthday,
+        placeOfBirth: placeOfBirth,
+        alsoKnownAs: alsoKnownAs,
+        knownForDepartment: knownForDepartment,
+        profilePath: profilePath,
+        biography: biography,
+        images: otherImages!.profiles!.map((e) => e.filePath ?? "").toList(),
+        movieCreditCasts: movieCreditsCast!
+            .map((e) => CastEntity(
+                name: "",
+                title: e.title,
+                posterPath: e.posterPath,
+                backdropPath: e.backdropPath,
+                voteAverage: e.voteAverage,
+                voteCount: e.voteCount))
+            .toList(),
+        tvCreditCasts: tvCreditsCast!
+            .map((e) => CastEntity(
+                name: e.name,
+                title: "",
+                posterPath: e.posterPath,
+                backdropPath: e.backdropPath,
+                voteAverage: e.voteAverage,
+                voteCount: e.voteCount))
+            .toList(),
+        popularity: popularity);
+  }
 
   @override
   List get props => [

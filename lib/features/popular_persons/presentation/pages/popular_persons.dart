@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:tmdb_app/core/services/services_locator.dart';
+import 'package:tmdb_app/core/utils/app_strings.dart';
 import 'package:tmdb_app/core/utils/enums.dart';
 import 'package:tmdb_app/features/popular_persons/domain/usecases/get_local_popular_persons_usecase.dart';
 import 'package:tmdb_app/features/popular_persons/domain/usecases/get_popular_persons_usecase.dart';
@@ -56,7 +57,7 @@ class PopularPersonsScreen extends StatelessWidget {
             appBar: AppBar(
               centerTitle: true,
               title: Text(
-                'Popular Persons',
+                AppStrings.popularPeopleScreenTitle,
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
                 ),
