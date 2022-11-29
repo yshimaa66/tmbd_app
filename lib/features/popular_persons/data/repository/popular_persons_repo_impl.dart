@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
-import 'package:tmdb_app/core/error/exception.dart';
+import 'package:tmdb_app/core/error/exceptions.dart';
 import 'package:tmdb_app/core/error/failure.dart';
 import 'package:tmdb_app/core/network/network_info.dart';
 import 'package:tmdb_app/core/services/services_locator.dart';
@@ -23,9 +23,9 @@ class PopularPersonsRepoImpl implements PopularPersonsRepo {
         return Right(result);
       } on ServerException catch (failure) {
         debugPrint(
-            "PopularPersonsRepoImpl ServerException ${failure.errorMessageModel.statusMessage}");
+            "PopularPersonsRepoImpl ServerException ${failure.message}");
         return Left(Failure(
-            failureMessage: failure.errorMessageModel.statusMessage ?? ""));
+            failureMessage: failure.message ?? ""));
       } on Failure catch (failure) {
         debugPrint("PopularPersonsRepoImpl Failure ${failure.failureMessage}");
         return Left(Failure(failureMessage: failure.failureMessage ?? ""));

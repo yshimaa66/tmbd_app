@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:tmdb_app/core/error/exception.dart';
+import 'package:tmdb_app/core/error/exceptions.dart';
 import 'package:tmdb_app/core/error/failure.dart';
 import 'package:tmdb_app/core/network/error_message_model.dart';
 import 'package:tmdb_app/core/services/services_locator.dart';
@@ -18,7 +18,7 @@ class PopularPersonsRemoteDataSourceImpl
   final APIService _apiService;
 
   PopularPersonsRemoteDataSourceImpl(this._apiService);
-
+     
   @override
   Future<AllPopularPersons?> getAllPopularPersons({int page = 1}) async {
     try {
@@ -30,8 +30,8 @@ class PopularPersonsRemoteDataSourceImpl
       return popular;
     } on ServerException catch (e) {
       debugPrint(
-          "PopularPersonsRemoteDataSourceImpl ServerException ${e.errorMessageModel.statusMessage}");
-      throw Failure(failureMessage: e.errorMessageModel.statusMessage ?? "");
+          "PopularPersonsRemoteDataSourceImpl ServerException ${e.message}");
+      throw Failure(failureMessage: e.message ?? "");
     } on Failure catch (e) {
       debugPrint(
           "PopularPersonsRemoteDataSourceImpl Failure ${e.failureMessage}");

@@ -6,6 +6,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:tmdb_app/core/services/services_locator.dart';
+import 'package:tmdb_app/core/utils/app_strings.dart';
 import 'package:tmdb_app/features/splash/splash.dart';
 import 'package:tmdb_app/utilities/index.dart';
 
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
               navigatorKey: navKey,
-              title: appName,
+              title: AppStrings.appName,
               debugShowCheckedModeBanner: false,
               home: const SplashScreen(),
               theme: darkTheme(context),

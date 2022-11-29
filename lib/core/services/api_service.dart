@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
-import 'package:tmdb_app/core/error/exception.dart';
+import 'package:tmdb_app/core/error/exceptions.dart';
 import 'package:tmdb_app/core/error/failure.dart';
 import 'package:tmdb_app/core/network/error_message_model.dart';
 
@@ -45,11 +45,7 @@ class APIService {
         return response.data;
       } else {
         debugPrint("APIService get ServerException" + response.statusCode.toString());
-        throw ServerException(ErrorMessageModel(
-          statusCode: response.statusCode,
-          statusMessage: response.statusMessage,
-          success: false,
-        ));
+        throw ServerException(response.statusMessage);
       }
     }catch (e) {
       if (e is dio.DioError) {

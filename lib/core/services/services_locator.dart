@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:tmdb_app/core/API/api_interceptors.dart';
 import 'package:tmdb_app/core/network/network_info.dart';
 import 'package:tmdb_app/core/services/api_service.dart';
 import 'package:tmdb_app/features/popular_persons/data/data_source/local/popular_person_local_data_source.dart';
@@ -27,6 +28,7 @@ class ServicesLocator {
 
     ///APIServices
     sl.registerLazySingleton<APIService>(() => APIService());
+    sl.registerLazySingleton<AppInterceptors>(() => AppInterceptors());
 
     ///PopularPersonsLocalDataSource
     sl.registerLazySingleton<PopularPersonsLocalDataSource>(
