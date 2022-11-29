@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tmdb_app/features/popular_person_details/data/models/popular_person_details.dart';
 import 'package:tmdb_app/features/popular_persons/data/models/popular_person/popular_person.dart';
 import 'package:tmdb_app/features/popular_persons/presentation/widgets/error_message_widget.dart';
 import 'package:tmdb_app/features/popular_person_details/cubit/cubit.dart';
@@ -23,7 +24,7 @@ class _PopularPersonsDetailsScreenState extends State<PopularPersonsDetailsScree
   bool? isSuccess;
   String errorStr = "";
 
-  PopularPerson? popularPerson;
+  PopularPersonDetails? popularPersonDetails;
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +33,13 @@ class _PopularPersonsDetailsScreenState extends State<PopularPersonsDetailsScree
       if(popularPersonDetailsCubit.loadingDetails){
         return const Center(child: CircularProgressIndicator());
       }
-      else if(!(isSuccess!) || popularPerson==null){
+      else if(!(isSuccess!) || popularPersonDetails==null){
         return ErrorMessageWidget(
             textStr: 'Error: Cannot get Person Details \n$errorStr',
             btnText: 'Retry',
             onPressed: popularPersonDetailsCubit.getPopularPersonDetail(widget.popularPersonId));
       }else{
-        return Details(popularPerson: popularPerson!);
+        return Details(popularPersonDetails: popularPersonDetails!);
       }
     }
 
@@ -56,7 +57,7 @@ class _PopularPersonsDetailsScreenState extends State<PopularPersonsDetailsScree
 
               if(state is PopularPersonDetailsSuccess){
                 isSuccess = true;
-                popularPerson = state.person;
+                popularPersonDetails = state.popularPersonDetails;
               }
 
             },builder: (context, state){

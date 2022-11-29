@@ -1,45 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
+import 'package:tmdb_app/features/popular_person_details/data/models/popular_person_details.dart';
 import 'package:tmdb_app/features/popular_persons/data/models/popular_person/popular_person.dart';
 import 'package:tmdb_app/features/popular_person_details/widgets/text_container.dart';
 
 class AboutWidget extends StatelessWidget {
-  final PopularPerson popularPerson;
-  const AboutWidget({Key? key, required this.popularPerson}) : super(key: key);
+  final PopularPersonDetails popularPersonDetails;
+  const AboutWidget({Key? key, required this.popularPersonDetails}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
-          if (popularPerson.name != null)
+          if (popularPersonDetails.name != null)
             ListTile(
-              subtitle: Text("${popularPerson.name}"),
+              subtitle: Text("${popularPersonDetails.name}"),
               title: const Text("Name"),
             ),
-          if (popularPerson.name != null) const Divider(),
-          if (popularPerson.birthday != null)
+          if (popularPersonDetails.name != null) const Divider(),
+          if (popularPersonDetails.birthday != null)
             ListTile(
-              subtitle: Text("${popularPerson.birthday}"),
+              subtitle: Text("${popularPersonDetails.birthday}"),
               title: const Text("Birthday"),
             ),
-          if (popularPerson.birthday != null) const Divider(),
-          if (popularPerson.placeOfBirth != null)
+          if (popularPersonDetails.birthday != null) const Divider(),
+          if (popularPersonDetails.placeOfBirth != null)
             ListTile(
-              subtitle: Text("${popularPerson.placeOfBirth}"),
+              subtitle: Text("${popularPersonDetails.placeOfBirth}"),
               title: const Text("From/Address"),
             ),
-          if (popularPerson.placeOfBirth != null) const Divider(),
-          if (popularPerson.alsoKnownAs?.isNotEmpty == true)
+          if (popularPersonDetails.placeOfBirth != null) const Divider(),
+          if (popularPersonDetails.alsoKnownAs?.isNotEmpty == true)
             ListTile(
               subtitle: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.only(top: 5),
                 child: Row(
                   children: List.generate(
-                    popularPerson.alsoKnownAs?.length ?? 0,
+                    popularPersonDetails.alsoKnownAs?.length ?? 0,
                     (index) => CustomTextContainer(
-                      text: "${popularPerson.alsoKnownAs?[index]}",
+                      text: "${popularPersonDetails.alsoKnownAs?[index]}",
                       textColor: Theme.of(context).primaryColor,
                     ),
                   ),
@@ -47,11 +48,11 @@ class AboutWidget extends StatelessWidget {
               ),
               title: const Text("Also Known As"),
             ),
-          if (popularPerson.alsoKnownAs?.isNotEmpty == true) const Divider(),
-          if (popularPerson.biography != null)
+          if (popularPersonDetails.alsoKnownAs?.isNotEmpty == true) const Divider(),
+          if (popularPersonDetails.biography != null)
             ListTile(
               subtitle: ReadMoreText(
-                "${popularPerson.biography}",
+                "${popularPersonDetails.biography}",
                 trimLines: 4,
                 trimMode: TrimMode.Line,
                 trimCollapsedText: '  READ MORE',

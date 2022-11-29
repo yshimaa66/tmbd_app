@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tmdb_app/features/popular_persons/data/models/popular_person/popular_person.dart';
 import 'credit_cast.dart';
 
 class CreditWidget extends StatelessWidget {
-  final List<Casts>? casts;
+  final List<dynamic>? casts;
   const CreditWidget({Key? key, required this.casts}) : super(key: key);
 
   @override

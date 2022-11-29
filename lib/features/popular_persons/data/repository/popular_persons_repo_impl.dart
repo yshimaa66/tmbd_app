@@ -4,10 +4,10 @@ import 'package:tmdb_app/core/error/exceptions.dart';
 import 'package:tmdb_app/core/error/failure.dart';
 import 'package:tmdb_app/core/network/network_info.dart';
 import 'package:tmdb_app/core/services/services_locator.dart';
-import 'package:tmdb_app/features/popular_persons/data/data_source/local/popular_person_local_data_source.dart';
-import 'package:tmdb_app/features/popular_persons/data/data_source/remote/popular_person_remote_data_source.dart';
+import 'package:tmdb_app/features/popular_persons/data/data_source/local/popular_persons_local_data_source.dart';
+import 'package:tmdb_app/features/popular_persons/data/data_source/remote/popular_persons_remote_data_source.dart';
+import 'package:tmdb_app/features/popular_persons/data/models/all_popular_persons/all_popular_persons.dart';
 import 'package:tmdb_app/features/popular_persons/domain/repository/popular_persons_repo.dart';
-import 'package:tmdb_app/models/all_popular_persons/all_popular_persons.dart';
 
 class PopularPersonsRepoImpl implements PopularPersonsRepo {
   @override
@@ -21,14 +21,9 @@ class PopularPersonsRepoImpl implements PopularPersonsRepo {
             .getAllPopularPersons(page: currentPage);
         debugPrint("PopularPersonsRepoImpl Right");
         return Right(result);
-      } on ServerException catch (failure) {
-        debugPrint(
-            "PopularPersonsRepoImpl ServerException ${failure.message}");
-        return Left(Failure(
-            failureMessage: failure.message ?? ""));
-      } on Failure catch (failure) {
-        debugPrint("PopularPersonsRepoImpl Failure ${failure.failureMessage}");
-        return Left(Failure(failureMessage: failure.failureMessage ?? ""));
+      } catch (e) {
+        debugPrint("PopularPersonsRepoImpl Failure ${e.toString()}");
+        return Left(Failure(failureMessage: e.toString()));
       }
     }
     debugPrint("PopularPersonsRepoImpl No Internet Connection");

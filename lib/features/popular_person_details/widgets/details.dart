@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:tmdb_app/features/popular_person_details/data/models/popular_person_details.dart';
 import 'package:tmdb_app/features/popular_person_details/widgets/about.dart';
 import 'package:tmdb_app/features/popular_person_details/widgets/credit.dart';
 import 'package:tmdb_app/features/popular_person_details/widgets/images.dart';
@@ -9,8 +10,8 @@ import 'package:tmdb_app/features/popular_persons/data/models/popular_person/pop
 import 'package:tmdb_app/utilities/index.dart';
 
 class Details extends StatelessWidget {
-  final PopularPerson popularPerson;
-  const Details({Key? key, required this.popularPerson}) : super(key: key);
+  final PopularPersonDetails popularPersonDetails;
+  const Details({Key? key, required this.popularPersonDetails}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class Details extends StatelessWidget {
               expandedHeight: 280.0,
               floating: false,
               pinned: true,
-              title: Text("${popularPerson.name}"),
+              title: Text("${popularPersonDetails.name}"),
               flexibleSpace: FlexibleSpaceBar(
                 background: Container(
                       decoration: BoxDecoration(
@@ -55,14 +56,14 @@ class Details extends StatelessWidget {
                               child: ClipOval(
                                 child: CachedNetworkImage(
                                   imageUrl:
-                                  "https://image.tmdb.org/t/p/w500${popularPerson.profilePath}",
+                                  "https://image.tmdb.org/t/p/w500${popularPersonDetails.profilePath}",
                                   fit: BoxFit.cover,
                                 ),
                               ),
                             ),
                             const SizedBox(height: 10),
                             Text(
-                              "${popularPerson.name}",
+                              "${popularPersonDetails.name}",
                               style: customTextStyleTitle.copyWith(
                                 fontSize: 18,
                               ),
@@ -72,12 +73,12 @@ class Details extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 CustomTextContainer(
-                                  text: "${popularPerson.knownForDepartment}",
+                                  text: "${popularPersonDetails.knownForDepartment}",
                                   textColor: Theme.of(context).primaryColor,
                                 ),
                                 // const SizedBox(width: 8),
                                 CustomTextContainer(
-                                  text: "${popularPerson.popularity} Known Credits",
+                                  text: "${popularPersonDetails.popularity} Known Credits",
                                   textColor: Colors.white54,
                                 ),
                               ],
@@ -113,10 +114,10 @@ class Details extends StatelessWidget {
         },
         body: TabBarView(
           children: [
-            AboutWidget(popularPerson: popularPerson),
-            ImagesWidget(images: popularPerson.otherImages),
-            CreditWidget(casts: popularPerson.movieCasts),
-            CreditWidget(casts: popularPerson.tvCasts),
+            AboutWidget(popularPersonDetails: popularPersonDetails),
+            ImagesWidget(images: popularPersonDetails.otherImages),
+            CreditWidget(casts: popularPersonDetails.movieCreditsCast),
+            CreditWidget(casts: popularPersonDetails.tvCreditsCast),
           ],
         ),
       ),

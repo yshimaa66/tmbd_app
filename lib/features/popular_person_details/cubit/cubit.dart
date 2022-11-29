@@ -12,7 +12,7 @@ class PopularPersonDetailsCubit extends Cubit<PopularPersonDetailsStates> {
 
   bool loadingDetails = false;
 
-  final PopularPersonRepository popularPersonRepository = PopularPersonRepository(PersonDb(),APIService());
+  final PopularPersonRepository popularPersonRepository = PopularPersonRepository(PersonDb());
 
   getPopularPersonDetail(int personId) async {
     if(personId!=-1){
