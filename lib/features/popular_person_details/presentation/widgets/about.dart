@@ -6,7 +6,9 @@ import 'package:tmdb_app/features/popular_person_details/presentation/widgets/te
 
 class AboutWidget extends StatelessWidget {
   final PopularPersonDetailsEntity popularPersonDetailsEntity;
-  const AboutWidget({Key? key, required this.popularPersonDetailsEntity}) : super(key: key);
+
+  const AboutWidget({Key? key, required this.popularPersonDetailsEntity})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,19 +38,30 @@ class AboutWidget extends StatelessWidget {
               subtitle: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.only(top: 5),
+                // child: Row(
+                //   children: List.generate(
+                //     popularPersonDetailsEntity.alsoKnownAs?.length ?? 0,
+                //     (index) => CustomTextContainer(
+                //       text: "${popularPersonDetailsEntity.alsoKnownAs?[index]}",
+                //       textColor: Theme.of(context).primaryColor,
+                //     ),
+                //   ),
+                // ),
                 child: Row(
-                  children: List.generate(
-                    popularPersonDetailsEntity.alsoKnownAs?.length ?? 0,
-                    (index) => CustomTextContainer(
-                      text: "${popularPersonDetailsEntity.alsoKnownAs?[index]}",
-                      textColor: Theme.of(context).primaryColor,
-                    ),
-                  ),
+                  children: popularPersonDetailsEntity.alsoKnownAs!
+                      .map(
+                        (e) => CustomTextContainer(
+                          text: "$e",
+                          textColor: Theme.of(context).primaryColor,
+                        ),
+                      )
+                      .toList(),
                 ),
               ),
               title: const Text("Also Known As"),
             ),
-          if (popularPersonDetailsEntity.alsoKnownAs?.isNotEmpty == true) const Divider(),
+          if (popularPersonDetailsEntity.alsoKnownAs?.isNotEmpty == true)
+            const Divider(),
           if (popularPersonDetailsEntity.biography != null)
             ListTile(
               subtitle: ReadMoreText(
@@ -70,6 +83,9 @@ class AboutWidget extends StatelessWidget {
               ),
               title: const Text("Biography"),
             ),
+          const SizedBox(
+            height: 30,
+          ),
         ],
       ),
     );

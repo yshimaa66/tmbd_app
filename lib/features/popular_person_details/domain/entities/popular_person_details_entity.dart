@@ -15,18 +15,18 @@ class PopularPersonDetailsEntity extends Equatable {
   double? popularity;
 
   PopularPersonDetailsEntity(
-      {this.id,
-      this.name,
-      this.birthday,
-      this.placeOfBirth,
-      this.knownForDepartment,
-      this.profilePath,
-      this.alsoKnownAs,
-      this.biography,
-      this.movieCreditCasts,
-      this.tvCreditCasts,
-      this.images,
-      this.popularity});
+      {this.id = -1,
+      this.name = "",
+      this.birthday = "",
+      this.placeOfBirth = "",
+      this.knownForDepartment = "",
+      this.profilePath = "",
+      this.alsoKnownAs = const [],
+      this.biography = "",
+      this.movieCreditCasts = const [],
+      this.tvCreditCasts = const [],
+      this.images = const [],
+      this.popularity = 0});
 
   PopularPersonDetailsEntity.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -35,7 +35,8 @@ class PopularPersonDetailsEntity extends Equatable {
     placeOfBirth = json["placeOfBirth"];
     knownForDepartment = json["knownForDepartment"];
     profilePath = json["profilePath"];
-    alsoKnownAs = json["alsoKnownAs"];
+    alsoKnownAs =
+        json["alsoKnownAs"] == null ? [] : json["alsoKnownAs"].cast<String>();
     biography = json["biography"];
     if (json['movieCreditCasts'] != null) {
       movieCreditCasts = <CastEntity>[];
@@ -71,6 +72,35 @@ class PopularPersonDetailsEntity extends Equatable {
     data['popularity'] = this.popularity;
     return data;
   }
+
+  PopularPersonDetailsEntity copyWith({
+    int? id,
+    String? name,
+    birthday,
+    placeOfBirth,
+    knownForDepartment,
+    profilePath,
+    List<String>? alsoKnownAs,
+    String? biography,
+    List<CastEntity>? movieCreditCasts,
+    List<CastEntity>? tvCreditCasts,
+    List<String>? images,
+    double? popularity,
+  }) =>
+      PopularPersonDetailsEntity(
+        id: id ?? this.id,
+        name: name ?? this.name,
+        birthday: birthday ?? this.birthday,
+        placeOfBirth: placeOfBirth ?? this.placeOfBirth,
+        knownForDepartment: knownForDepartment ?? this.knownForDepartment,
+        profilePath: profilePath ?? this.profilePath,
+        alsoKnownAs: alsoKnownAs ?? this.alsoKnownAs,
+        biography: biography ?? this.biography,
+        movieCreditCasts: movieCreditCasts ?? this.movieCreditCasts,
+        tvCreditCasts: tvCreditCasts ?? this.tvCreditCasts,
+        images: images ?? this.images,
+        popularity: popularity ?? this.popularity,
+      );
 
   @override
   List<Object?> get props => [

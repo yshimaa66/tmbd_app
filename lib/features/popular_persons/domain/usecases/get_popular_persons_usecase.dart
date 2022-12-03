@@ -8,7 +8,7 @@ import 'package:tmdb_app/features/popular_persons/domain/entities/all_popular_pe
 import 'package:tmdb_app/features/popular_persons/domain/repository/popular_persons_repo.dart';
 
 class GetPopularPersonsUseCase
-    implements BaseUseCase<AllPopularPersonsEntity?, GetPopularPersonsParameters> {
+    implements BaseUseCase<Future<Either<Failure, AllPopularPersonsEntity?>>, GetPopularPersonsParameters> {
   @override
   Future<Either<Failure, AllPopularPersonsEntity?>> call(
       GetPopularPersonsParameters parameters) {

@@ -117,25 +117,31 @@ class PopularPersonDetails extends Equatable {
         knownForDepartment: knownForDepartment,
         profilePath: profilePath,
         biography: biography,
-        images: otherImages!.profiles!.map((e) => e.filePath ?? "").toList(),
-        movieCreditCasts: movieCreditsCast!
-            .map((e) => CastEntity(
-                name: "",
-                title: e.title,
-                posterPath: e.posterPath,
-                backdropPath: e.backdropPath,
-                voteAverage: e.voteAverage,
-                voteCount: e.voteCount))
-            .toList(),
-        tvCreditCasts: tvCreditsCast!
-            .map((e) => CastEntity(
-                name: e.name,
-                title: "",
-                posterPath: e.posterPath,
-                backdropPath: e.backdropPath,
-                voteAverage: e.voteAverage,
-                voteCount: e.voteCount))
-            .toList(),
+        images: otherImages != null
+            ? otherImages!.profiles!.map((e) => e.filePath ?? "").toList()
+            : const [],
+        movieCreditCasts: movieCreditsCast != null
+            ? movieCreditsCast!
+                .map((e) => CastEntity(
+                    name: "",
+                    title: e.title,
+                    posterPath: e.posterPath,
+                    backdropPath: e.backdropPath,
+                    voteAverage: e.voteAverage,
+                    voteCount: e.voteCount))
+                .toList()
+            : const [],
+        tvCreditCasts: tvCreditsCast != null
+            ? tvCreditsCast!
+                .map((e) => CastEntity(
+                    name: e.name,
+                    title: "",
+                    posterPath: e.posterPath,
+                    backdropPath: e.backdropPath,
+                    voteAverage: e.voteAverage,
+                    voteCount: e.voteCount))
+                .toList()
+            : const [],
         popularity: popularity);
   }
 

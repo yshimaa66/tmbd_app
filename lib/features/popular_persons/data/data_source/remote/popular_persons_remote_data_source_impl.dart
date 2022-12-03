@@ -8,18 +8,15 @@ class PopularPersonsRemoteDataSourceImpl
   final ApiConsumer apiConsumer;
 
   PopularPersonsRemoteDataSourceImpl(this.apiConsumer);
-     
+
   @override
   Future<AllPopularPersons?> getAllPopularPersons({int page = 1}) async {
-      Map<String, dynamic> result = Map<String, dynamic>.from(
-        await apiConsumer.get(
-          EndPoints.peopleUrl,
-          queryParameters:{
-            "page": page,
-          }
-        ),
-      );
-      final popular = AllPopularPersons.fromJson(result);
-      return popular;
+    Map<String, dynamic> result = Map<String, dynamic>.from(
+      await apiConsumer.get(EndPoints.peopleUrl, queryParameters: {
+        "page": page,
+      }),
+    );
+    final AllPopularPersons popular = AllPopularPersons.fromJson(result);
+    return popular;
   }
 }

@@ -82,7 +82,9 @@ class Cast extends Equatable {
     backdropPath = json['backdrop_path'];
     genreIds = json['genre_ids'].cast<int>();
     id = json['id'];
-    originCountry = json['origin_country'].cast<String>();
+    originCountry = json['origin_country'] != null
+        ? json['origin_country'].cast<String>()
+        : const [];
     originalLanguage = json['original_language'];
     originalName = json['original_name'];
     overview = json['overview'];
@@ -186,7 +188,9 @@ class Crew extends Equatable {
     backdropPath = json['backdrop_path'];
     genreIds = json['genre_ids'].cast<int>();
     id = json['id'];
-    originCountry = json['origin_country'].cast<String>();
+    originCountry = json['origin_country'] != null
+        ? json['origin_country'].cast<String>()
+        : const [];
     originalLanguage = json['original_language'];
     originalName = json['original_name'];
     overview = json['overview'];
@@ -227,23 +231,23 @@ class Crew extends Equatable {
 
   @override
   List get props => [
-    adult,
-    backdropPath,
-    genreIds,
-    id,
-    originCountry,
-    originalLanguage,
-    originalName,
-    overview,
-    popularity,
-    posterPath,
-    firstAirDate,
-    name,
-    voteAverage,
-    voteCount,
-    creditId,
-    department,
-    episodeCount,
-    job
-  ];
+        adult,
+        backdropPath,
+        genreIds,
+        id,
+        originCountry,
+        originalLanguage,
+        originalName,
+        overview,
+        popularity,
+        posterPath,
+        firstAirDate,
+        name,
+        voteAverage,
+        voteCount,
+        creditId,
+        department,
+        episodeCount,
+        job
+      ];
 }

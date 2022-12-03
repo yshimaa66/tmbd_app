@@ -17,7 +17,7 @@ class PopularPersonItem extends StatelessWidget {
     return GestureDetector(
       onTap: () => navigateTo(
           context,
-          PopularPersonsDetailsScreen(
+          PopularPersonDetailsScreen(
             personId: popularPerson!.id??-1,
             name: popularPerson!.name??"",
           )),

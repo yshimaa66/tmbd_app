@@ -20,6 +20,7 @@ class PopularPersonsScreen extends StatelessWidget {
     late PopularPersonsBloc popularPersonsBloc;
 
     Widget getBodyWidget(PopularPersonsState state) {
+      debugPrint("PopularPersonState ${state}");
       if (state.getFirstData) {
         switch (state.requestState) {
           case RequestState.error:
@@ -68,11 +69,11 @@ class PopularPersonsScreen extends StatelessWidget {
                   previousState.requestState != nextState.requestState,
               listener: (context, state) async {
                 if (state.requestState == RequestState.error) {
-                  if(state.dataSource == DataSource.remote) {
+                  if (state.dataSource == DataSource.remote) {
                     popularPersonsBloc.add(GetLocalPopularPersons());
                   }
                 }
-                if(state.isRefreshing){
+                if (state.isRefreshing) {
                   popularPersonsBloc.add(GetPopularPersons());
                 }
               },

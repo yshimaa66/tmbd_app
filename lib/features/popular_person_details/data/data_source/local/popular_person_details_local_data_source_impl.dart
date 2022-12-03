@@ -9,16 +9,17 @@ class PopularPersonDetailsLocalDataSourceImpl
   @override
   storePopularPersonDetails(
       PopularPersonDetailsEntity popularPersonDetailsEntity) {
-    sl<GetStorage>().write(
-        "person_${popularPersonDetailsEntity.id}", popularPersonDetailsEntity.toJson());
+    sl<GetStorage>().write("person_${popularPersonDetailsEntity.id}",
+        popularPersonDetailsEntity.toJson());
   }
 
   @override
   PopularPersonDetailsEntity? getLocalPopularPersonDetails(int personId) {
     if (!sl<GetStorage>().hasData("person_$personId")) return null;
 
-    PopularPersonDetailsEntity popularPersonDetailsEntity = PopularPersonDetailsEntity.fromJson(
-        sl<GetStorage>().read("person_$personId"));
+    PopularPersonDetailsEntity popularPersonDetailsEntity =
+        PopularPersonDetailsEntity.fromJson(
+            sl<GetStorage>().read("person_$personId"));
     return popularPersonDetailsEntity;
   }
 }
