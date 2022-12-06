@@ -87,10 +87,10 @@ class PopularPerson extends Equatable {
 
   PopularPersonEntity toDomain() {
     return PopularPersonEntity(
-        id: id!,
-        name: name!,
-        knownForDepartment: knownForDepartment!,
-        profilePath: profilePath!);
+        id: id??-1,
+        name: name??"",
+        knownForDepartment: knownForDepartment??"",
+        profilePath: profilePath??"");
   }
 }
 

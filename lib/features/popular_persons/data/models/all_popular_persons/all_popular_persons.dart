@@ -37,10 +37,11 @@ class AllPopularPersons extends Equatable {
 
   AllPopularPersonsEntity toDomain() {
     return AllPopularPersonsEntity(
-      page: page!,
-      totalPages: totalPages!,
-      totalResults: totalResults!,
-      results: results!.map((e) => e.toDomain()).toList(),
+      page: page??-1,
+      totalPages: totalPages??0,
+      totalResults: totalResults??0,
+      results: results!=null?
+      results!.map((e) => e.toDomain()).toList():[],
     );
   }
 

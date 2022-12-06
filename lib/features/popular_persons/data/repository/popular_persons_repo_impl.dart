@@ -20,7 +20,7 @@ class PopularPersonsRepoImpl implements PopularPersonsRepo {
       try {
         final result = await sl<PopularPersonsRemoteDataSource>()
             .getAllPopularPersons(page: currentPage);
-        debugPrint("PopularPersonsRepoImpl Right");
+        debugPrint("PopularPersonsRepoImpl Right $result");
         return Right(result!.toDomain());
       } catch (e) {
         debugPrint("PopularPersonsRepoImpl Failure ${e.toString()}");
@@ -42,9 +42,9 @@ class PopularPersonsRepoImpl implements PopularPersonsRepo {
   @override
   Either<Failure, AllPopularPersonsEntity?> getAllLocalPopularPersons(
       int currentPage) {
-    final result = sl<PopularPersonsLocalDataSource>()
-        .getAllLocalPopularPersons(currentPage);
     try {
+      final result = sl<PopularPersonsLocalDataSource>()
+          .getAllLocalPopularPersons(currentPage);
       return Right(result!);
     } on LocalDatabaseException catch (failure) {
       return Left(Failure(failureMessage: failure.errorMessage ?? ""));

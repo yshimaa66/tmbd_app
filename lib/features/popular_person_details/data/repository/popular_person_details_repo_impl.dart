@@ -23,9 +23,9 @@ class PopularPersonDetailsRepoImpl implements PopularPersonDetailsRepo {
   @override
   Either<Failure, PopularPersonDetailsEntity?> getLocalPopularPersonDetails(
       int personId) {
-    final result = sl<PopularPersonDetailsLocalDataSource>()
-        .getLocalPopularPersonDetails(personId);
     try {
+      final result = sl<PopularPersonDetailsLocalDataSource>()
+          .getLocalPopularPersonDetails(personId);
       return Right(result!);
     } on LocalDatabaseException catch (failure) {
       return Left(Failure(failureMessage: failure.errorMessage ?? ""));

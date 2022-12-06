@@ -1,4 +1,5 @@
 import 'package:get_storage/get_storage.dart';
+import 'package:tmdb_app/core/error/exceptions.dart';
 import 'package:tmdb_app/core/services/services_locator.dart';
 import 'package:tmdb_app/features/popular_person_details/data/data_source/local/popular_person_details_local_data_source.dart';
 import 'package:tmdb_app/features/popular_person_details/data/models/popular_person_details.dart';
@@ -15,8 +16,9 @@ class PopularPersonDetailsLocalDataSourceImpl
 
   @override
   PopularPersonDetailsEntity? getLocalPopularPersonDetails(int personId) {
-    if (!sl<GetStorage>().hasData("person_$personId")) return null;
-
+    if (!sl<GetStorage>().hasData("person_$personId")){
+      throw LocalDatabaseException("No Local data found");
+    }
     PopularPersonDetailsEntity popularPersonDetailsEntity =
         PopularPersonDetailsEntity.fromJson(
             sl<GetStorage>().read("person_$personId"));
