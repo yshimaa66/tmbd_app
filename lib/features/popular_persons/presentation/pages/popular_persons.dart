@@ -1,7 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:tmdb_app/core/services/services_locator.dart';
+import 'package:tmdb_app/core/services/injection.dart';
 import 'package:tmdb_app/core/utils/app_strings.dart';
 import 'package:tmdb_app/core/utils/enums.dart';
 import 'package:tmdb_app/features/popular_persons/domain/usecases/get_local_popular_persons_usecase.dart';
@@ -10,7 +11,6 @@ import 'package:tmdb_app/features/popular_persons/domain/usecases/store_popular_
 import 'package:tmdb_app/features/popular_persons/presentation/bloc/popular_persons_bloc.dart';
 import 'package:tmdb_app/features/popular_persons/presentation/widgets/error_message_widget.dart';
 import 'package:tmdb_app/features/popular_persons/presentation/widgets/popular_persons_grid_view.dart';
-import 'package:tmdb_app/features/popular_persons/presentation/widgets/snackBar_widget.dart';
 
 class PopularPersonsScreen extends StatelessWidget {
   const PopularPersonsScreen({Key? key}) : super(key: key);
@@ -50,9 +50,9 @@ class PopularPersonsScreen extends StatelessWidget {
 
     return BlocProvider<PopularPersonsBloc>(
         create: (context) => PopularPersonsBloc(
-            sl<GetPopularPersonsUseCase>(),
-            sl<StorePopularPersonsUseCase>(),
-            sl<GetLocalPopularPersonsUseCase>())
+            getIt<GetPopularPersonsUseCase>(),
+            getIt<StorePopularPersonsUseCase>(),
+            getIt<GetLocalPopularPersonsUseCase>())
           ..add(GetPopularPersons()),
         child: Scaffold(
             appBar: AppBar(
@@ -70,6 +70,7 @@ class PopularPersonsScreen extends StatelessWidget {
               listener: (context, state) async {
                 if (state.requestState == RequestState.error) {
                   if (state.dataSource == DataSource.remote) {
+                    log("",name:"popularPersonsBloc.add(GetLocalPopularPersons()");
                     popularPersonsBloc.add(GetLocalPopularPersons());
                   }
                 }

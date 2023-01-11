@@ -1,11 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:tmdb_app/core/error/exceptions.dart';
 import 'package:tmdb_app/core/error/failure.dart';
 import 'package:tmdb_app/core/network/network_info.dart';
-import 'package:tmdb_app/core/services/services_locator.dart';
-import 'package:tmdb_app/features/popular_person_details/data/data_source/local/popular_person_details_local_data_source.dart';
-import 'package:tmdb_app/features/popular_person_details/data/data_source/remote/popular_person_details_remote_data_source.dart';
+import 'package:tmdb_app/core/services/injection.dart';
+import 'package:tmdb_app/features/popular_person_details/data/data_source/local/popular_person_details_LDS.dart';
+import 'package:tmdb_app/features/popular_person_details/data/data_source/remote/popular_person_details_RDS.dart';
 import 'package:tmdb_app/features/popular_person_details/data/models/movie_credits.dart';
 import 'package:tmdb_app/features/popular_person_details/data/models/other_images.dart';
 import 'package:tmdb_app/features/popular_person_details/data/models/popular_person_details.dart';
@@ -13,18 +14,14 @@ import 'package:tmdb_app/features/popular_person_details/data/models/tv_credits.
 import 'package:tmdb_app/features/popular_person_details/domain/entities/cast_entity.dart';
 import 'package:tmdb_app/features/popular_person_details/domain/entities/popular_person_details_entity.dart';
 import 'package:tmdb_app/features/popular_person_details/domain/repository/popular_person_details_repo.dart';
-import 'package:tmdb_app/features/popular_persons/data/data_source/local/popular_persons_local_data_source.dart';
-import 'package:tmdb_app/features/popular_persons/data/data_source/remote/popular_persons_remote_data_source.dart';
-import 'package:tmdb_app/features/popular_persons/data/models/all_popular_persons/all_popular_persons.dart';
-import 'package:tmdb_app/features/popular_persons/domain/entities/all_popular_persons_entity.dart';
-import 'package:tmdb_app/features/popular_persons/domain/repository/popular_persons_repo.dart';
 
+@LazySingleton(as: PopularPersonDetailsRepo)
 class PopularPersonDetailsRepoImpl implements PopularPersonDetailsRepo {
   @override
   Either<Failure, PopularPersonDetailsEntity?> getLocalPopularPersonDetails(
       int personId) {
     try {
-      final result = sl<PopularPersonDetailsLocalDataSource>()
+      final result = getIt<PopularPersonDetailsLocalDataSource>()
           .getLocalPopularPersonDetails(personId);
       return Right(result!);
     } on LocalDatabaseException catch (failure) {
@@ -36,11 +33,11 @@ class PopularPersonDetailsRepoImpl implements PopularPersonDetailsRepo {
   Future<Either<Failure, PopularPersonDetailsEntity?>> getPopularPersonDetails(
       int personId) async {
     debugPrint("PopularPersonDetailsRepoImpl");
-    final bool isConnected = await sl<NetworkInfo>().isConnected;
+    final bool isConnected = await getIt<NetworkInfo>().isConnected;
     if (isConnected) {
       try {
         final PopularPersonDetails? result =
-            await sl<PopularPersonDetailsRemoteDataSource>()
+            await getIt<PopularPersonDetailsRemoteDataSource>()
                 .getPopularPersonDetails(personId);
         debugPrint("PopularPersonDetailsRepoImpl Right $result");
         return Right(result!.toDomain());
@@ -57,7 +54,7 @@ class PopularPersonDetailsRepoImpl implements PopularPersonDetailsRepo {
   Future storePopularPersonDetails(
       PopularPersonDetailsEntity popularPersonDetailsEntity) async {
     debugPrint("repo impl storeAllPopularPersons $PopularPersonDetailsEntity");
-    await sl<PopularPersonDetailsLocalDataSource>()
+    await getIt<PopularPersonDetailsLocalDataSource>()
         .storePopularPersonDetails(popularPersonDetailsEntity);
   }
 
@@ -65,11 +62,11 @@ class PopularPersonDetailsRepoImpl implements PopularPersonDetailsRepo {
   Future<Either<Failure, PopularPersonDetailsEntity?>> getPopularPersonImages(
       PopularPersonDetailsEntity popularPersonDetailsEntity) async {
     debugPrint("PopularPersonDetailsRepoImpl getPopularPersonImages");
-    final bool isConnected = await sl<NetworkInfo>().isConnected;
+    final bool isConnected = await getIt<NetworkInfo>().isConnected;
     if (isConnected) {
       try {
         final OtherImages? result =
-            await sl<PopularPersonDetailsRemoteDataSource>()
+            await getIt<PopularPersonDetailsRemoteDataSource>()
                 .getPopularPersonImages(popularPersonDetailsEntity.id!);
         PopularPersonDetailsEntity newPopularPersonDetailsEntity =
             popularPersonDetailsEntity.copyWith(
@@ -90,11 +87,11 @@ class PopularPersonDetailsRepoImpl implements PopularPersonDetailsRepo {
   Future<Either<Failure, PopularPersonDetailsEntity?>> getPopularPersonMovies(
       PopularPersonDetailsEntity popularPersonDetailsEntity) async {
     debugPrint("PopularPersonDetailsRepoImpl getPopularPersonMovies");
-    final bool isConnected = await sl<NetworkInfo>().isConnected;
+    final bool isConnected = await getIt<NetworkInfo>().isConnected;
     if (isConnected) {
       try {
         final MovieCredits? result =
-            await sl<PopularPersonDetailsRemoteDataSource>()
+            await getIt<PopularPersonDetailsRemoteDataSource>()
                 .getPopularPersonMovies(popularPersonDetailsEntity.id!);
         PopularPersonDetailsEntity newPopularPersonDetailsEntity =
             popularPersonDetailsEntity.copyWith(
@@ -124,11 +121,11 @@ class PopularPersonDetailsRepoImpl implements PopularPersonDetailsRepo {
   Future<Either<Failure, PopularPersonDetailsEntity?>> getPopularPersonTVShows(
       PopularPersonDetailsEntity popularPersonDetailsEntity) async {
     debugPrint("PopularPersonDetailsRepoImpl getPopularPersonTVShows");
-    final bool isConnected = await sl<NetworkInfo>().isConnected;
+    final bool isConnected = await getIt<NetworkInfo>().isConnected;
     if (isConnected) {
       try {
         final TVCredits? result =
-            await sl<PopularPersonDetailsRemoteDataSource>()
+            await getIt<PopularPersonDetailsRemoteDataSource>()
                 .getPopularPersonTVShows(popularPersonDetailsEntity.id!);
         PopularPersonDetailsEntity newPopularPersonDetailsEntity =
             popularPersonDetailsEntity.copyWith(

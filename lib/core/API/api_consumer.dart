@@ -1,3 +1,6 @@
+import 'package:injectable/injectable.dart';
+
+
 abstract class ApiConsumer {
   Future<dynamic> get(String path, {Map<String, dynamic>? queryParameters});
   Future<dynamic> post(

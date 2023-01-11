@@ -1,13 +1,14 @@
 import 'package:flutter/foundation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:tmdb_app/core/API/api_consumer.dart';
 import 'package:tmdb_app/core/API/end_points.dart';
-import 'package:tmdb_app/features/popular_person_details/data/data_source/remote/popular_person_details_remote_data_source.dart';
+import 'package:tmdb_app/features/popular_person_details/data/data_source/remote/popular_person_details_RDS.dart';
 import 'package:tmdb_app/features/popular_person_details/data/models/movie_credits.dart';
 import 'package:tmdb_app/features/popular_person_details/data/models/other_images.dart';
 import 'package:tmdb_app/features/popular_person_details/data/models/popular_person_details.dart';
 import 'package:tmdb_app/features/popular_person_details/data/models/tv_credits.dart';
-import 'package:tmdb_app/features/popular_person_details/domain/entities/popular_person_details_entity.dart';
 
+@LazySingleton(as: PopularPersonDetailsRemoteDataSource)
 class PopularPersonDetailsRemoteDataSourceImpl
     implements PopularPersonDetailsRemoteDataSource {
   final ApiConsumer apiConsumer;
@@ -58,17 +59,17 @@ class PopularPersonDetailsRemoteDataSourceImpl
   }
 
   @override
-  Future<TVCredits?> getPopularPersonTVShows(int personId) async{
+  Future<TVCredits?> getPopularPersonTVShows(int personId) async {
     debugPrint(
         "PopularPersonDetailsRemoteDataSourceImpl getPopularPersonTVShows $personId");
     Map<String, dynamic> result = Map<String, dynamic>.from(
-        await apiConsumer.get(
-    EndPoints.peopleTVShowsUrl(personId.toString()),
-    ),
+      await apiConsumer.get(
+        EndPoints.peopleTVShowsUrl(personId.toString()),
+      ),
     );
     final TVCredits tvCredits = TVCredits.fromJson(result);
     debugPrint(
-    "PopularPersonDetailsRemoteDataSourceImpl getPopularPersonTVShows $personId ${tvCredits.cast!.first}");
+        "PopularPersonDetailsRemoteDataSourceImpl getPopularPersonTVShows $personId ${tvCredits.cast!.first}");
     return tvCredits;
   }
 }

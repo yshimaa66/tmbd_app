@@ -5,6 +5,7 @@ import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:tmdb_app/core/services/injection.dart';
 import 'package:tmdb_app/core/services/services_locator.dart';
 import 'package:tmdb_app/core/utils/app_strings.dart';
 import 'package:tmdb_app/features/splash/splash.dart';
@@ -18,7 +19,8 @@ void main() async {
   await FlutterDownloader.initialize(debug: true, ignoreSsl: true);
 
   await GetStorage.init();
-  ServicesLocator()..init();
+  // ServicesLocator()..init();
+  configureInjection();
   await SystemChrome.setPreferredOrientations(
     [
       DeviceOrientation.portraitUp,

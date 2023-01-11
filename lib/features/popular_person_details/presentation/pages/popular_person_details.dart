@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tmdb_app/core/services/services_locator.dart';
+import 'package:tmdb_app/core/services/injection.dart';
 import 'package:tmdb_app/core/utils/app_strings.dart';
 import 'package:tmdb_app/core/utils/enums.dart';
-import 'package:tmdb_app/features/popular_person_details/data/models/popular_person_details.dart';
 import 'package:tmdb_app/features/popular_person_details/domain/usecases/get_local_popular_person_details_usecase.dart';
 import 'package:tmdb_app/features/popular_person_details/domain/usecases/get_popular_person_details_usecase.dart';
 import 'package:tmdb_app/features/popular_person_details/domain/usecases/get_popular_person_images_usecase.dart';
@@ -58,12 +57,12 @@ class PopularPersonDetailsScreen extends StatelessWidget {
 
     return BlocProvider<PopularPersonDetailsBloc>(
         create: (context) => PopularPersonDetailsBloc(
-            sl<GetPopularPersonDetailsUseCase>(),
-            sl<GetPopularPersonImagesUseCase>(),
-            sl<GetPopularPersonMoviesUseCase>(),
-            sl<GetPopularPersonTVShowsUseCase>(),
-            sl<StorePopularPersonDetailsUseCase>(),
-            sl<GetLocalPopularPersonDetailsUseCase>())
+            getIt<GetPopularPersonDetailsUseCase>(),
+            getIt<GetPopularPersonImagesUseCase>(),
+            getIt<GetPopularPersonMoviesUseCase>(),
+            getIt<GetPopularPersonTVShowsUseCase>(),
+            getIt<StorePopularPersonDetailsUseCase>(),
+            getIt<GetLocalPopularPersonDetailsUseCase>())
           ..add(GetPopularPersonDetails(personId: personId)),
         child: Scaffold(
           body:

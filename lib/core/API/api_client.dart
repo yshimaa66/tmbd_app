@@ -2,14 +2,16 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:tmdb_app/core/API/api_consumer.dart';
 import 'package:tmdb_app/core/API/api_interceptors.dart';
 import 'package:tmdb_app/core/API/end_points.dart';
 import 'package:tmdb_app/core/API/status_code.dart';
 import 'package:tmdb_app/core/error/exceptions.dart';
-import 'package:tmdb_app/core/services/services_locator.dart';
+import 'package:tmdb_app/core/services/injection.dart';
 import 'package:tmdb_app/core/utils/app_strings.dart';
 
+@LazySingleton(as: ApiConsumer)
 class DioConsumer implements ApiConsumer {
   final Dio client;
 
@@ -28,7 +30,7 @@ class DioConsumer implements ApiConsumer {
       ..validateStatus = (status) {
         return status! == StatusCode.ok;
       };
-    client.interceptors.add(sl<AppInterceptors>());
+    client.interceptors.add(getIt<AppInterceptors>());
   }
 
   @override
@@ -43,11 +45,11 @@ class DioConsumer implements ApiConsumer {
 
   @override
   Future post(
-      String path, {
-        Map<String, dynamic>? body,
-        bool formDataIsEnabled = false,
-        Map<String, dynamic>? queryParameters,
-      }) async {
+    String path, {
+    Map<String, dynamic>? body,
+    bool formDataIsEnabled = false,
+    Map<String, dynamic>? queryParameters,
+  }) async {
     try {
       final response = await client.post(
         path,
@@ -63,10 +65,10 @@ class DioConsumer implements ApiConsumer {
   @override
   Future put(String path,
       {Map<String, dynamic>? body,
-        Map<String, dynamic>? queryParameters}) async {
+      Map<String, dynamic>? queryParameters}) async {
     try {
       final response =
-      await client.put(path, queryParameters: queryParameters, data: body);
+          await client.put(path, queryParameters: queryParameters, data: body);
       return _handleResponseAsJson(response);
     } on DioError catch (error) {
       _handleDioError(error);

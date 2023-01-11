@@ -1,4 +1,3 @@
-import 'package:tmdb_app/core/services/api_service.dart';
 import 'package:tmdb_app/data/local/person_db.dart';
 import 'package:tmdb_app/features/popular_person_details/data/models/movie_credits.dart' as movie_credits;
 import 'package:tmdb_app/features/popular_person_details/data/models/popular_person_details.dart';

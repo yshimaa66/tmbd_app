@@ -108,6 +108,9 @@ class PopularPersonsBloc
 
   FutureOr<void> _getLocalPopularPersons(
       GetLocalPopularPersons event, Emitter<PopularPersonsState> emit) async {
+    emit(state.copyWith(
+      requestState: RequestState.loading,
+    ));
     final result = await getLocalPopularPersonsUseCase(
         GetLocalPopularPersonsParameters(state.currentPage));
     result.fold((l) {
