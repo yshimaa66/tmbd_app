@@ -32,31 +32,24 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   device_info: ^2.0.3
-
-  # ui
   responsive_framework: ^0.2.0
   cached_network_image: ^3.2.1
   readmore: ^2.2.0
   flutter_svg: ^1.1.1+1
   oktoast: ^3.3.0
-
   freezed_annotation: ^2.1.0
-  json_annotation: ^4.6.0
-
-  # state management
   flutter_bloc: ^8.1.1
-
-  # local storage
   get_storage: ^2.0.3
-
-  # network
   dio: ^4.0.6
   pretty_dio_logger: ^1.1.1
-  connectivity_plus: ^2.3.6
-
+  internet_connection_checker: ^1.0.0+1
   flutter_downloader: ^1.8.1
   path_provider: ^2.0.11
   permission_handler: ^10.0.0
+  equatable: ^2.0.5
+  dartz: ^0.10.1
+  get_it: ^7.2.0
+  injectable: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -67,10 +60,8 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
-  mockito: ^5.2.0
   freezed: ^2.1.0+1
-  json_serializable: ^6.3.1
+  injectable_generator:
   build_runner:
 
 # For information on the generic Dart part of this file, see the
